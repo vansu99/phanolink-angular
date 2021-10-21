@@ -12,6 +12,7 @@ import { PhanolinkSkeletonModule } from '@shared/components/phanolink-skeleton/p
 import { ProductSidebarComponent } from './pages/product-list/components/product-sidebar/product-sidebar.component';
 import { ProductFilterComponent } from './pages/product-list/components/product-filter/product-filter.component';
 import { ProductNotfoundComponent } from './pages/product-list/components/product-notfound/product-notfound.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ProductNotfoundComponent } from './pages/product-list/components/produc
     ProductSidebarComponent,
     ProductFilterComponent,
     ProductNotfoundComponent,
+    ProductDetailComponent,
   ],
   imports: [
     CommonModule,
