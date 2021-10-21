@@ -10,6 +10,9 @@ export class PublicLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.checkAuthenticated()
   }
+
+  checkAuthenticated() {}
 
 }

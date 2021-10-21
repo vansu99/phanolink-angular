@@ -1,0 +1,102 @@
+@import 'src/styles/helpers/mixins';
+@import 'src/styles/helpers/variables';
+
+.banner {
+  padding-top: 22px;
+  padding-bottom: 32px;
+  background-color: #fff;
+
+  &-wrapper {
+    @include flex;
+    flex-wrap: wrap;
+    @media #{$info-screen-992} {
+      flex-direction: column;
+    }
+  }
+  &-left {
+    width: 75%;
+    @media #{$info-screen-992} {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    @media #{$info-screen-768} {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    @media #{$info-screen-575} {
+      margin-bottom: 20px;
+    }
+  }
+
+  &-right {
+    width: 25%;
+    @include flex;
+    flex-wrap: wrap;
+    @media #{$info-screen-992} {
+      width: 100%;
+    }
+    @media #{$info-screen-768} {
+      width: 100%;
+    }
+  }
+
+  &-icons {
+    width: 50%;
+    @include flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media #{$info-screen-992} {
+      width: 25%;
+    }
+    @media #{$info-screen-768} {
+      margin-bottom: 15px;
+      &:nth-child(3),
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    @media #{$info-screen-575} {
+      width: 50%;
+    }
+
+    &-image {
+      width: 80px;
+      height: 65px;
+      object-fit: contain;
+      @media #{$info-screen-768} {
+        width: 90px;
+        height: 80px;
+      }
+      @media #{$info-screen-575} {
+        width: 70px;
+        height: 80px;
+      }
+    }
+
+    p {
+      color: #777777;
+      text-align: center;
+      @include font-size(16.9px);
+      line-height: 1.2;
+    }
+  }
+}
+
+// owl carousel
+::ng-deep .carouselClass .owl-theme .owl-dots {
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+
+  .owl-dot span {
+    width: 25px;
+    height: 3px;
+    border-radius: 0;
+    background-color: #0099a8;
+  }
+
+  .owl-dot.active span {
+    background-color: #fff;
+  }
+}

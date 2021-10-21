@@ -1,0 +1,14 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.home {
+  background-color: #ebebeb;
+  padding-bottom: 76px;
+  @media #{$info-screen-768} {
+    padding-top: 110px;
+  }
+
+  &-wrapper {
+    padding-top: 15px;
+  }
+}
