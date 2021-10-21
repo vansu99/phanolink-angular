@@ -1,0 +1,191 @@
+<header class="header" (scroll)="onWindowScroll()" [ngClass]="fixed ? 'sticky' : ''">
+  <div class="container">
+    <!--    header top-->
+    <div class="header-top" [ngClass]="fixed ? 'd-none-sticky' : ''">
+      <div class="header-top-hot header-top-group">
+        <img src="assets/images/fire2x.png" alt="" />
+        <p class="header-top-name">Khuyến mãi tốt</p>
+      </div>
+      <div class="header-top-notification header-top-group">
+        <img src="assets/images/message2x.png" alt="nofication" />
+        <div class="text">
+          <p class="header-top-name">Thông báo</p>
+          <span>của tôi</span>
+        </div>
+      </div>
+<!--      <div *ngIf="isLoggedIn | async; else notLoggedIn" class="header-top-account header-top-group">-->
+<!--        <img src="assets/images/login2x.png" alt="login" />-->
+<!--        <div class="text">-->
+<!--          <p class="header-top-name" (click)="logOut()">Đăng xuất</p>-->
+<!--          <a class="header-top-account" [routerLink]="['/user/account/profile']">{{-->
+<!--            user?.name-->
+<!--            }}</a>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+
+    <!--    header middle-->
+    <div class="header-middle">
+      <a [routerLink]="['']" class="header-middle-logo">
+        <img src="assets/images/Logo.png" alt="phanolink" />
+      </a>
+      <div class="header-middle-search">
+        <input
+          type="text"
+          placeholder="Bạn đang tìm thuốc gì..."
+          [formControl]="query"
+          (keyup.enter)="handleSearchProduct()"
+        />
+        <button class="search-button" (click)="handleSearchProduct()">
+          <i class="fas fa-search"></i>
+          Tìm Kiếm
+        </button>
+      </div>
+      <div class="header-middle-buttons">
+        <a class="header-button-item">
+          <img src="assets/images/toa2x.png" alt="tao toa thuoc" />
+          Tạo toa thuốc
+        </a>
+        <a class="header-button-item" [routerLink]="['/cart']">
+          <img src="assets/images/cart2x.png" alt="gio hang" />
+          Giỏ hàng
+<!--          <p class="header-button-item-badge">{{ cartLength }}</p>-->
+          <p class="header-button-item-badge">0</p>
+        </a>
+      </div>
+    </div>
+
+    <!--    header bottom-->
+    <div class="header-bottom" [ngClass]="fixed ? 'd-none-sticky' : ''">
+      <div class="header-bottom-item">
+        <a class="header-bottom-link">
+          <img src="assets/images/menu2x.png" alt="danh mục sản phẩm" />
+          <span class="header-name">danh mục sản phẩm</span>
+        </a>
+        <ul class="sub-menu">
+          <li class="sub-menu-item">
+            <a class="sub-menu-link">Mẹ và bé</a>
+          </li>
+          <li class="sub-menu-item">
+            <a class="sub-menu-link">Mẹ và bé</a>
+          </li>
+          <li class="sub-menu-item">
+            <a class="sub-menu-link">Mẹ và bé</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-bottom-item">
+        <a class="header-bottom-link">
+          <img src="assets/images/fire-red2x.png" alt="khuyến mãi hot" />
+          <span class="header-name">khuyến mãi hot</span>
+        </a>
+      </div>
+      <div class="header-bottom-item">
+        <a class="header-bottom-link">
+          <img src="assets/images/localtion2x.png" alt="hệ thống nhà thuốc" />
+          <span class="header-name">hệ thống nhà thuốc</span>
+        </a>
+      </div>
+      <div class="header-bottom-item">
+        <a class="header-bottom-link">
+          <img src="assets/images/heart2x.png" alt="góc sức khỏe" />
+          <span class="header-name">góc sức khỏe</span>
+        </a>
+      </div>
+      <div class="header-bottom-item">
+        <a class="header-bottom-link">
+          <img src="assets/images/home2x.png" alt="giới thiệu" />
+          <span class="header-name">giới thiệu</span>
+        </a>
+      </div>
+      <div class="header-bottom-item">
+        <a class="header-bottom-link">
+          <img src="assets/images/question2x.png" alt="" />
+          <span class="header-name">hướng dẫn</span>
+        </a>
+      </div>
+    </div>
+
+    <!--    header mobile-->
+    <div class="header-mobile">
+      <ul class="header-menu" *ngIf="isMenuMobile" [@slideInLeftOnEnter] [@slideOutLeftOnLeave]>
+        <button class="header-menu-close" (click)="hideMenuMobile()">
+          <i class="fas fa-times"></i>
+        </button>
+        <li class="header-menu-item">
+          <a class="header-menu-link">
+            <img src="assets/images/fire-red2x.png" alt="" />
+            <span class="header-name">Khuyến mãi hot</span>
+          </a>
+        </li>
+        <li class="header-menu-item">
+          <a class="header-menu-link">
+            <img src="assets/images/localtion2x.png" alt="hệ thống nhà thuốc" />
+            <span class="header-name">hệ thống nhà thuốc</span>
+          </a>
+        </li>
+        <li class="header-menu-item">
+          <a class="header-menu-link">
+            <img src="assets/images/heart2x.png" alt="góc sức khỏe" />
+            <span class="header-name">góc sức khỏe</span>
+          </a>
+        </li>
+        <li class="header-menu-item">
+          <a class="header-menu-link">
+            <img src="assets/images/home2x.png" alt="giới thiệu" />
+            <span class="header-name">giới thiệu</span>
+          </a>
+        </li>
+        <li class="header-menu-item">
+          <a class="header-menu-link">
+            <img src="assets/images/question2x.png" alt="" />
+            <span class="header-name">hướng dẫn</span>
+          </a>
+        </li>
+        <li class="header-menu-item">
+          <a class="header-menu-link" (click)="openModalLogin()">
+            <img src="assets/images/login2x.png" alt="" />
+            <span class="header-name">đăng nhập</span>
+          </a>
+        </li>
+        <li class="header-menu-item">
+          <a class="header-menu-link" (click)="openModalRegister()">
+            <img src="assets/images/login2x.png" alt="" />
+            <span class="header-name">đăng ký</span>
+          </a>
+        </li>
+      </ul>
+
+      <a [routerLink]="['']" class="header-logo">
+        <img src="assets/images/Logo.png" alt="phanolink" />
+      </a>
+      <div class="header-nav">
+        <button class="header-hamburger" (click)="showMenuMobile()">
+          <img src="assets/images/menu2x.png" alt="" />
+        </button>
+        <div class="header-search">
+          <input type="text" placeholder="Bạn đang tìm thuốc gì..." [formControl]="query" />
+          <button class="search-button">
+            <img src="assets/images/search2x.png" alt="" />
+          </button>
+        </div>
+        <div class="header-cart">
+          <a class="header-cart-item">
+            <img src="assets/images/cart2x.png" alt="" />
+            <span class="header-cart-badge">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<ng-template #notLoggedIn>
+  <div class="header-top-account header-top-group" (click)="openModalLogin()">
+    <img src="assets/images/login2x.png" alt="login" />
+    <div class="text">
+      <p class="header-top-name">Đăng nhập</p>
+      <span>Tài khoản</span>
+    </div>
+  </div>
+</ng-template>

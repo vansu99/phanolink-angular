@@ -8,3 +8,20 @@
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
+.custom-dialog-form {
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 0;
+    overflow: unset;
+  }
+}
+
+snack-bar-container.success {
+  background-color: #5cb85c;
+  color: #fff;
+}
+
+snack-bar-container.notification simple-snack-bar {
+  font-size: 16px;
+  font-weight: 600;
+}
