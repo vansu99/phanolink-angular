@@ -5,6 +5,9 @@ import {
   slideOutLeftOnLeaveAnimation,
 } from 'angular-animations';
 import { FormControl } from '@angular/forms';
+import { of } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'phanolink-header',
@@ -21,7 +24,7 @@ export class PhanolinkHeaderComponent implements OnInit {
   fixed = false;
   isMenuMobile = false;
 
-  constructor() {}
+  constructor(private readonly route: ActivatedRoute, private readonly router: Router) {}
 
   ngOnInit(): void {
     return;
@@ -40,7 +43,15 @@ export class PhanolinkHeaderComponent implements OnInit {
     this.isMenuMobile = false;
   }
 
-  handleSearchProduct() {}
+  handleSearchProduct() {
+    of(this.query.value)
+      .pipe(distinctUntilChanged(), debounceTime(600))
+      .subscribe((query) => {
+        this.router.navigate(['/products', this.route.snapshot.queryParams.categoryId], {
+          queryParams: { ...this.route.snapshot.queryParams, q: query },
+        });
+      });
+  }
 
   openModalRegister() {}
 
