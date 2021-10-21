@@ -1,0 +1,21 @@
+<div class="pagination">
+  <ul class="pagination-list">
+    <li class="pagination-item" *ngFor="let count of pages">
+      <button
+        [class]="count === current ? 'pagination-link active' : 'pagination-link'"
+        (click)="onChangePage($event, '/products', count)"
+      >
+        {{ count }}
+      </button>
+    </li>
+    <li class="pagination-item">
+      <button
+        class="pagination-link pagination-icon-next"
+        [disabled]="current === pages[pages.length - 1]"
+        (click)="gotoNextPage($event, '/products')"
+      >
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </li>
+  </ul>
+</div>
