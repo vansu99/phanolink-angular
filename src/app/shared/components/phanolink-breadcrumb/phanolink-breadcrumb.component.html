@@ -1,0 +1,10 @@
+<div class="breadcrumb">
+  <div class="container">
+    <ul class="breadcrumb-wrapper">
+      <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumb$ | async">
+        <a class="breadcrumb-text" [routerLink]="breadcrumb.url">{{breadcrumb.label}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+

@@ -1,0 +1,14 @@
+@import "src/styles/helpers/variables";
+@import "src/styles/helpers/mixins";
+
+.product-notfound {
+  background-color: #fff;
+  height: 100px;
+  @include flexCenter;
+
+  h4 {
+    @include font-size(18px);
+    color: $text-primary;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,27 @@
+<ng-container *ngIf="query">
+  <div class="product-search-result">
+    Kết quả tìm kiếm cho <span>'{{ query }}'</span>:
+    <span class="result-count">{{ productLength }} kết quả</span>
+  </div>
+</ng-container>
+
+<section class="product-filter">
+  <span>Ưu tiên xem:</span>
+  <div class="product-filter-list">
+    <a
+      class="product-filter-item"
+      (click)="sortProduct({ _page: 1, _sort: 'price', _order: 'asc' })"
+      >Giá thấp</a
+    >
+    <a
+      class="product-filter-item"
+      (click)="sortProduct({ _page: 1, _sort: 'price', _order: 'desc' })"
+      >Giá cao</a
+    >
+    <a
+      class="product-filter-item filter--hot"
+      (click)="sortProduct({ _page: 1, _sort: 'discount', _order: 'asc' })"
+      >Khuyến mãi</a
+    >
+  </div>
+</section>

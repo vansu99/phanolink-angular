@@ -1,0 +1,141 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.products-wrapper {
+  @include flex;
+  justify-content: flex-start;
+
+  @media #{$info-screen-768} {
+    flex-direction: column;
+  }
+
+  .products-content {
+    flex: 1 0 0;
+  }
+}
+
+.product {
+  &-list {
+    @include flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    margin-bottom: 50px;
+    @media #{$info-screen-768} {
+      margin-bottom: 30px;
+    }
+  }
+
+  &-item {
+    width: calc(100% / 4);
+    border-top: 1px solid #e2e3e4;
+    background-color: #fff;
+    &:not(:nth-child(4n)) {
+      border-right: 1px solid #e2e3e4;
+    }
+    @media #{$info-screen-992} {
+      width: calc(100% / 3);
+      &:not(:nth-child(3n)) {
+        border-right: 1px solid #e2e3e4;
+      }
+    }
+    @media #{$info-screen-768} {
+      width: 50%;
+    }
+  }
+
+  &-link {
+    position: relative;
+    @include flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  &-thumbnail {
+    margin-bottom: 25px;
+    padding-top: 40px;
+    @include transition(transform .3s ease-in-out);
+    .thumbnail-inner {
+      flex-shrink: 0;
+      text-align: center;
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.65%;
+      img {
+        object-fit: contain;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        vertical-align: bottom;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &-information {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  &-name {
+    margin-bottom: 7px;
+    span {
+      @include font-size(16.09px);
+      font-family: $font-intel;
+      color: #020202;
+      line-height: 1.3;
+      @include textClamp(2);
+    }
+  }
+
+  &-price {
+    display: flex;
+    flex-direction: column;
+    &-current {
+      color: $text-fourth;
+      @include font-size(16.76px);
+      font-weight: bold;
+    }
+    &-original {
+      color: $text-second;
+      text-decoration: line-through;
+      @include font-size(12.74px);
+    }
+  }
+
+  &-badge {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .badge {
+    &-sale {
+      left: 24px;
+      top: 0;
+    }
+    &-freeship {
+      right: 13px;
+      top: 15px;
+    }
+    &-gift {
+      right: 13px;
+      top: 66px;
+    }
+  }
+
+  .skeleton {
+    @include flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

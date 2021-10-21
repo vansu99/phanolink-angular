@@ -1,0 +1,41 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.breadcrumb {
+  background-color: #e2e3e4;
+  padding: 20px 0;
+
+  @media #{$info-screen-768} {
+    display: none;
+  }
+
+  &-wrapper {
+    @include flex;
+    align-items: center;
+  }
+
+  &-item {
+    &:not(:last-child):after {
+      content: "\f054";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      position: relative;
+      margin: 0 15px;
+      color: #808081;
+      font-size: 12px;
+    }
+
+    &:last-child {
+      .breadcrumb-text {
+        color: $text-primary;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &-text {
+    @include font-size(12px);
+    font-weight: 500;
+    color: #808081;
+  }
+}

@@ -1,0 +1,12 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.products {
+  background-color: #ebebeb;
+  padding-top: 17px;
+  padding-bottom: 76px;
+
+  @media #{$info-screen-768} {
+    padding-top: 140px;
+  }
+}
