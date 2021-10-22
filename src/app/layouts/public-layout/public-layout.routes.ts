@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { NotFoundComponent } from '@pages/not-found/not-found.component';
 import { PublicLayoutComponent } from '@layouts/public-layout/public-layout.component';
 
 export const publicRoutes: Routes = [
@@ -14,8 +15,16 @@ export const publicRoutes: Routes = [
       },
       {
         path: 'products',
-        loadChildren: () => import('@pages/products/products.module').then(m => m.ProductsModule)
-      }
+        loadChildren: () => import('@pages/products/products.module').then((m) => m.ProductsModule),
+      },
+      {
+        path: '**',
+        component: NotFoundComponent,
+        data: {
+          breadcrumb: '404 không tìm thấy liên kết',
+        },
+        pathMatch: 'full',
+      },
     ],
   },
 ];
