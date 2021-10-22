@@ -13,15 +13,15 @@
           <span>của tôi</span>
         </div>
       </div>
-<!--      <div *ngIf="isLoggedIn | async; else notLoggedIn" class="header-top-account header-top-group">-->
-<!--        <img src="assets/images/login2x.png" alt="login" />-->
-<!--        <div class="text">-->
-<!--          <p class="header-top-name" (click)="logOut()">Đăng xuất</p>-->
-<!--          <a class="header-top-account" [routerLink]="['/user/account/profile']">{{-->
-<!--            user?.name-->
-<!--            }}</a>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div *ngIf="isLoggedIn | async; else notLoggedIn" class="header-top-account header-top-group">
+        <img src="assets/images/login2x.png" alt="login" />
+        <div class="text">
+          <p class="header-top-name" (click)="logOut()">Đăng xuất</p>
+          <a class="header-top-account" [routerLink]="['/user/account/profile']">{{
+            user?.name
+          }}</a>
+        </div>
+      </div>
     </div>
 
     <!--    header middle-->
@@ -49,7 +49,7 @@
         <a class="header-button-item" [routerLink]="['/cart']">
           <img src="assets/images/cart2x.png" alt="gio hang" />
           Giỏ hàng
-<!--          <p class="header-button-item-badge">{{ cartLength }}</p>-->
+          <!--          <p class="header-button-item-badge">{{ cartLength }}</p>-->
           <p class="header-button-item-badge">0</p>
         </a>
       </div>
