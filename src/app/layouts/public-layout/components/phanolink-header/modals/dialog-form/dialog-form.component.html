@@ -1,0 +1,25 @@
+<div class="dialog-form" [ngClass]="{ registerDialog: !isLoginActive }">
+  <div class="dialog-form-header">
+    <div
+      class="dialog-heading"
+      [ngClass]="{ active: isLoginActive }"
+      (click)="isLoginActive = true"
+    >
+      <h3>Đăng nhập</h3>
+    </div>
+    <div
+      class="dialog-heading"
+      [ngClass]="{ active: !isLoginActive }"
+      (click)="isLoginActive = false"
+    >
+      <h3>Đăng ký</h3>
+    </div>
+  </div>
+  <ng-container *ngIf="isLoginActive; else register">
+    <phanolink-login></phanolink-login>
+  </ng-container>
+</div>
+
+<ng-template #register>
+<!--  <phanolink-register></phanolink-register>-->
+</ng-template>

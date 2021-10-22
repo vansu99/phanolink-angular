@@ -1,0 +1,60 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.dialog-form {
+  padding: 0 40px 43px;
+  @media #{$info-screen-768} {
+    padding: 0 20px 25px;
+  }
+
+  &.registerDialog {
+    border-bottom: 7px solid $bg-primary;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+
+    .dialog-heading {
+      @include flexCenter;
+      height: 55px;
+      width: 193px;
+      margin-bottom: 45px;
+      @include transform(translateY(-5px));
+      position: relative;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      cursor: pointer;
+      h3 {
+        color: $text-primary;
+        @include font-size(22px);
+        font-family: $font-intel-bold;
+        text-transform: uppercase;
+      }
+      @media #{$info-screen-768} {
+        height: 45px;
+        margin-bottom: 25px;
+        h3 {
+          @include font-size(18px);
+        }
+      }
+
+      &.active {
+        background-color: $bg-primary;
+        h3 {
+          color: #fff;
+        }
+        &:before {
+          content: '';
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 1px;
+          left: -5px;
+          border-bottom: 5px solid #016b68;
+          border-left: 5px solid transparent;
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
 
+export enum STORAGE_KEYS {
+  TOKEN = 'token',
+  USER = 'user',
+  CART = 'carts',
+  PAYMENT= 'payment'
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -9,29 +16,29 @@ export class StorageService {
     this.storage = window.localStorage;
   }
 
-  set(key: string, value: string): void {
+  set(key: STORAGE_KEYS, value: string): void {
     this.storage[key] = value;
   }
 
-  get(key: string): string {
+  get(key: STORAGE_KEYS): string {
     return this.storage[key] || '';
   }
 
-  setObject(key: string, value: any): void {
+  setObject(key: STORAGE_KEYS, value: any): void {
     if (!value) return;
     this.storage[key] = JSON.stringify(value);
   }
 
-  getObject(key: string): any {
+  getObject(key: STORAGE_KEYS): any {
     return JSON.parse(this.storage[key] || '{}');
   }
 
-  getValue<T>(key: string): T {
+  getValue<T>(key: STORAGE_KEYS): T {
     const obj = JSON.parse(this.storage[key] || null);
     return <T>obj;
   }
 
-  remove(key: string): any {
+  remove(key: STORAGE_KEYS): any {
     this.storage.removeItem(key);
   }
 
