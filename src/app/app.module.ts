@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { CoresModule } from './cores/cores.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '@shared/shared.module';
+import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './cores/interceptors/auth.interceptor';
+import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from '@pages/not-found/not-found.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PhanolinkBreadcrumbModule } from '@shared/components/phanolink-breadcrumb/phanolink-breadcrumb.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -18,6 +20,7 @@ import { AuthInterceptor } from './cores/interceptors/auth.interceptor';
     CoresModule,
     SharedModule,
     MatDialogModule,
+    PhanolinkBreadcrumbModule,
   ],
   providers: [
     {
