@@ -1,0 +1,82 @@
+<section class="register">
+  <ng-container *ngIf="!isRegisterSuccess">
+    <p class="register-desc">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+      dolore magna aliquam erat volutpat. Ut wisi enim a
+    </p>
+    <div class="register-form">
+      <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="form-group">
+          <label class="form-label" for="name">Họ tên</label>
+          <input type="text" id="name" class="form-input" placeholder="Nhập họ tên" formControlName="name" />
+          <div *ngIf="formRegister.get('name')?.errors && formRegister.controls['name']?.touched">
+            <div class="form-error" *ngIf="formRegister.controls['name'].errors?.required">Yêu cầu nhập họ tên</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input type="text" id="email" class="form-input" placeholder="Nhập email" formControlName="email" />
+          <div *ngIf="formRegister.get('email')?.errors && formRegister.controls['email']?.touched">
+            <div class="form-error" *ngIf="formRegister.controls['email'].errors?.required">Yêu cầu nhập email</div>
+            <div class="form-error" *ngIf="formRegister.controls['email'].errors?.email">Email không hợp lệ</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Mật khẩu</label>
+          <input
+            type="password"
+            id="password"
+            class="form-input"
+            formControlName="password"
+            placeholder="Mật khẩu từ 6 đến 32 ký tự"
+          />
+          <div *ngIf="formRegister.get('password')?.errors && formRegister.controls['password']?.touched">
+            <div class="form-error" *ngIf="formRegister.controls['password'].errors?.required">
+              Yêu cầu nhập mật khẩu
+            </div>
+            <div
+              class="form-error"
+              *ngIf="
+                formRegister.controls['password'].errors?.minlength ||
+                formRegister.controls['password'].errors?.maxlength
+              "
+            >
+              Mật khẩu yêu cầu ít nhất từ 6 đến 32 ký tự
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="form-label">Số điện thoại</label>
+          <input type="text" id="phone" class="form-input" formControlName="phone" placeholder="Nhập số điện thoại" />
+          <div *ngIf="formRegister.get('phone')?.errors && formRegister.controls['phone']?.touched">
+            <div class="form-error" *ngIf="formRegister.controls['phone'].errors?.required">
+              Yêu cầu nhập số điện thoại
+            </div>
+            <div class="form-error" *ngIf="formRegister.controls['phone'].errors?.pattern">
+              Số điện thoại không hợp lệ
+            </div>
+          </div>
+        </div>
+
+        <div class="form-notify">
+          <input type="checkbox" formControlName="notifySale" id="notifySale" name="notifySale" class="form-checkbox" />
+          <label for="notifySale">Nhận các thông tin và chương trình khuyến mãi qua email</label>
+        </div>
+        <button type="submit" class="register-form-button" [disabled]="formRegister.invalid">Tạo tài khoản</button>
+        <p class="form-policy">
+          Khi bạn nhấn Đăng ký, bạn đã đồng ý thực hiện mọi giao dịch mua bán theo điều kiện sử dụng và chính sách của
+          <b>Phanolink</b>
+        </p>
+      </form>
+    </div>
+  </ng-container>
+</section>
+
+<ng-template [ngIf]="isRegisterSuccess">
+  <p class="register-desc">
+    Tài khoản của bạn đã được khởi tạo thành công. <br />
+    Vui lòng đăng nhập vào email <b style="color: #ea4036">{{ userInfo }}</b> để tiếp tục sử dụng dịch vụ tại Phanolink.
+  </p>
+  <button class="register-form-button button--uppercase" type="button" (click)="openLogin()">Đăng
+    nhập</button>
+</ng-template>
