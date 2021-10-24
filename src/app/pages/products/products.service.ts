@@ -26,8 +26,8 @@ export class ProductsService {
         map(({ body }) => {
           return {
             product: body.data,
-            totalItems: body.pagination?.total,
-            page: body.pagination?.currentPage,
+            totalItems: body.pagination?.total || 0,
+            page: body.pagination?.currentPage || 1,
           };
         }),
         finalize(() => this.isLoadingSubject.next(false))
@@ -38,7 +38,7 @@ export class ProductsService {
         this.paginator.pagination.next({
           currentPage: pager.currentPage,
           limit: 20,
-          totalPage: pager.pages,
+          totalPage: pager.pages
         });
       });
   }
