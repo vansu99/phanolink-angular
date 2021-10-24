@@ -73,7 +73,16 @@ export class PhanolinkHeaderComponent implements OnInit {
       });
   }
 
-  openModalRegister() {}
+  openModalRegister() {
+    this.isMenuMobile = false;
+    this.dialog.open(DialogFormComponent, {
+      width: '470px',
+      panelClass: 'custom-dialog-form',
+      data: {
+        isLoginActive: false,
+      },
+    });
+  }
 
   openModalLogin() {
     this.dialog.open(DialogFormComponent, {

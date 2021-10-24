@@ -55,6 +55,7 @@ export class AuthService {
         this.isAuthenticatedSubject.next(true);
         // set currentUser
         this.setUser(user);
+        this.errorMsg.next('')
         if (this.router.url === '/cart') {
           this.router.navigate(['/checkout/success']);
         } else if (this.router.url === '/admin/login') {
