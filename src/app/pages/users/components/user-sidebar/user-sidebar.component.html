@@ -1,0 +1,27 @@
+<aside class="user-sidebar">
+  <div class="user-sidebar-container">
+    <div class="user-sidebar-brand">
+      <h4 class="sidebar-title">quản lý tài khoản</h4>
+    </div>
+    <div class="user-sidebar-category">
+      <div class="category-list">
+        <a
+          class="category-item"
+          [routerLink]="['/user/account/profile']"
+          [routerLinkActive]="'active'"
+        >
+          <i class="fas fa-chevron-right category-icon"></i>
+          Thông tin tài khoản
+        </a>
+        <a
+          class="category-item"
+          [routerLink]="['/user/purchase']"
+          [routerLinkActive]="'active'"
+        >
+          <i class="fas fa-chevron-right category-icon"></i>
+          Quản lý đơn hàng
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
