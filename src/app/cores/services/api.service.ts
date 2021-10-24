@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private readonly baseUrl = 'https://fake-api-ecom.herokuapp.com/api';
+  private readonly baseUrl = 'https://boiling-brook-88386.herokuapp.com/api';
   constructor(private readonly http: HttpClient) {}
 
   get(
