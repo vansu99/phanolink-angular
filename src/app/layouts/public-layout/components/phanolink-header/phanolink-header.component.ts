@@ -12,6 +12,7 @@ import { AuthService } from '@features/auth/auth.service';
 import { UserState } from '@features/auth/auth.model';
 import { DialogFormComponent } from '@layouts/public-layout/components/phanolink-header/modals/dialog-form/dialog-form.component';
 import { MatDialog } from '@angular/material/dialog';
+import {CartService} from "@pages/cart/cart.service";
 
 @Component({
   selector: 'phanolink-header',
@@ -29,13 +30,18 @@ export class PhanolinkHeaderComponent implements OnInit {
   isMenuMobile = false;
   isLoggedIn!: Observable<boolean>;
   query = new FormControl('');
+  cartLength = 0
 
   constructor(
     private readonly router: Router,
     private readonly dialog: MatDialog,
     private readonly auth: AuthService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly cart: CartService
   ) {
+    this.cart.cartList$.subscribe((response) => {
+      this.cartLength = response.length;
+    });
     this.isLoggedIn = this.auth.isAuthenticated$;
   }
 

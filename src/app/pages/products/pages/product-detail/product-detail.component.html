@@ -2,7 +2,7 @@
   <!--  thumbnail-->
   <div class="product-detail-thumbnail product-detail-item">
     <div class="thumbnail-main">
-      <img [src]="productDetail.img_path" [alt]="productDetail.title" />
+      <img [src]="productDetail.img_path" [alt]="productDetail.name" />
     </div>
     <ul class="thumbnail-list">
       <li class="thumbnail-item">
@@ -38,7 +38,7 @@
       <p>
         Giá:
         <span class="info-bottom-price">{{
-          productDetail.original_price | discount: productDetail.discount | price
+          productDetail.original_price | discount: productDetail?.discount | price
         }}</span>
       </p>
       <p>Tình trạng: <span class="info-bottom-status">Còn hàng</span></p>
@@ -49,7 +49,7 @@
             <button class="quantity-minus" (click)="handleDecreaseQuantity()">
               <i class="fas fa-minus"></i>
             </button>
-            <input type="text" class="quantity-amount" min="1" [value]="quantity" />
+            <input type="text" class="quantity-amount" min="1" [value]="quantity" disabled />
             <button class="quantity-plus" (click)="handleIncreaseQuantity()">
               <i class="fas fa-plus"></i>
             </button>

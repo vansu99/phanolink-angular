@@ -24,6 +24,10 @@ export const publicRoutes: Routes = [
         canLoad: [AuthGuard],
       },
       {
+        path: 'cart',
+        loadChildren: () => import('@pages/cart/cart.module').then((m) => m.CartModule),
+      },
+      {
         path: '**',
         component: NotFoundComponent,
         data: {
