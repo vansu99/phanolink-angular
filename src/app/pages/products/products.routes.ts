@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { ProductsComponent } from '@pages/products/products.component';
-import { ProductListComponent } from '@pages/products/pages/product-list/product-list.component';
-import { ProductSidebarResolver } from '@pages/products/pages/product-list/components/product-sidebar/product-sidebar.resolver';
-import { ProductDetailComponent } from '@pages/products/pages/product-detail/product-detail.component';
-import { ProductDetailResolver } from '@pages/products/pages/product-detail/product-detail.resolver';
+import { ProductsComponent } from './products.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
+import { ProductDetailResolver } from './pages/product-detail/product-detail.resolver';
+import { ProductSidebarResolver } from './pages/product-list/components/product-sidebar/product-sidebar.resolver';
 
 export const productsRoutes: Routes = [
   {
@@ -11,9 +11,15 @@ export const productsRoutes: Routes = [
     component: ProductsComponent,
     children: [
       {
+        path: '',
+        component: ProductListComponent,
+        resolve: { cate: ProductSidebarResolver },
+      },
+      {
         path: ':categoryId',
+        pathMatch: 'full',
         data: {
-          breadcrumb: (data: any) => `${data.cate.result[0]?.title}`,
+          breadcrumb: (data: any) => `${data.cate.result[0]?.name}`,
         },
         resolve: { cate: ProductSidebarResolver },
         children: [
@@ -25,10 +31,10 @@ export const productsRoutes: Routes = [
             },
           },
           {
-            path: ':id',
+            path: 'de/:id',
             component: ProductDetailComponent,
             data: {
-              breadcrumb: (data: any) => `${data.product.title}`,
+              breadcrumb: (data: any) => `${data.product.name}`,
             },
             resolve: { product: ProductDetailResolver },
           },

@@ -21,23 +21,49 @@ export class ProductsService {
     const queryParams = queryString.stringify(obj);
     this.isLoadingSubject.next(true);
     return this.api
-      .get(`products?${queryParams}`)
+      .get(`home?${queryParams}`)
       .pipe(
         map(({ body }) => {
           return {
-            //pages: Math.ceil(body.pagination._totalRows / obj._limit),
-            totalItems: body.pagination._totalRows,
             product: body.data,
+            totalItems: body.pagination?.total,
+            page: body.pagination?.currentPage,
           };
         }),
         finalize(() => this.isLoadingSubject.next(false))
       )
-      .subscribe(({ totalItems, product }) => {
+      .subscribe(({ totalItems, product, page }) => {
         this.productSubject.next(product);
-        const pager = this.paginator.getPager(totalItems, obj._page);
+        const pager = this.paginator.getPager(totalItems, page);
         this.paginator.pagination.next({
           currentPage: pager.currentPage,
-          limit: obj._limit,
+          limit: 20,
+          totalPage: pager.pages,
+        });
+      });
+  }
+
+  getProductByCategoryId(id: number | string, obj?: any) {
+    const queryParams = queryString.stringify(obj);
+    this.isLoadingSubject.next(true);
+    return this.api
+      .get(`categories/${id}?${queryParams}`)
+      .pipe(
+        map((product) => {
+          return {
+            product: product.body.data,
+            totalItems: product.body.pagination?.total,
+            page: product.body.pagination?.currentPage,
+          };
+        }),
+        finalize(() => this.isLoadingSubject.next(false))
+      )
+      .subscribe(({ totalItems, product, page }) => {
+        this.productSubject.next(product);
+        const pager = this.paginator.getPager(totalItems, page);
+        this.paginator.pagination.next({
+          currentPage: pager.currentPage,
+          limit: 20,
           totalPage: pager.pages,
         });
       });

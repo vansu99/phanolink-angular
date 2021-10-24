@@ -51,16 +51,16 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
     cursor: pointer;
 
-    &:hover:not(:last-child) {
+    &:hover {
       color: #fff;
-      background-color: $bg-primary;
+      background-color: $text-fourth;
     }
 
     @media #{$info-screen-768} {
       margin-right: 10px;
     }
 
-    &.filter--hot {
+    &.active {
       background-color: $text-fourth;
       color: #fff;
     }

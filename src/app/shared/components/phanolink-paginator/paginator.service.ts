@@ -1,6 +1,6 @@
+import { ReplaySubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { PaginationState } from '@shared/components/phanolink-paginator/paginator.model';
-import { ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,7 @@ export class PaginatorService {
   pagination = new ReplaySubject<PaginationState>(1);
   pagination$ = this.pagination.asObservable();
   currentPage = new ReplaySubject<number>(1);
+
   constructor() {}
 
   getPager(totalItems: number, current: number) {
