@@ -1,0 +1,90 @@
+<phanolink-breadcrumb></phanolink-breadcrumb>
+<section class="cart">
+  <div class="container">
+    <div class="cart-content" *ngIf="cartList.length > 0">
+      <div class="cart-left">
+        <div class="section-header section-header--left">
+          <div class="header-item">
+            <h4>Giỏ hàng</h4>
+            <b>({{ cartLength }} sản phẩm)</b>
+          </div>
+        </div>
+        <div class="cart-table">
+          <div class="cart-table-header">
+            <p class="text text--light">sản phẩm</p>
+            <p class="text text--light">giá</p>
+            <p class="text text--light">số lượng</p>
+          </div>
+          <ul class="cart-table-content">
+            <li class="table-content-item" *ngFor="let cart of cartList">
+              <div class="product-info">
+                <img [src]="cart.thumbnail" [alt]="cart.title" class="product-image" />
+                <div class="product-info-desc">
+                  <p class="text text--black">
+                    {{ cart.title }}
+                  </p>
+                  <button class="product-button" (click)="removeCart(cart.id)">Xóa</button>
+                </div>
+              </div>
+              <div class="product-price">
+                <span class="product-price-current">{{ cart.price | price }}</span>
+                <div class="product-price-sale">
+                  <img src="assets/images/cart-img-sale.png" alt="sale off" />
+                  <span class="product-price-original">{{ cart.original_price | price }}</span>
+                </div>
+              </div>
+              <div class="product-quantity">
+                <div class="product-quantity-item">
+                  <button
+                    class="quantity-minus"
+                    (click)="handleDecreaseQuantity(cart.id, cart.quantity)"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input type="text" [value]="cart.quantity" class="quantity-value" disabled />
+                  <button
+                    class="quantity-plus"
+                    (click)="handleIncreaseQuantity(cart.id, cart.quantity)"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="cart-right">
+        <div class="cart-voucher">
+          <h4 class="text">Mã giảm giá</h4>
+          <div class="form-voucher">
+            <input type="text" placeholder="Nhập mã giảm giá..." />
+            <button type="submit">áp dụng</button>
+          </div>
+        </div>
+        <div class="cart-payment">
+          <div class="cart-payment-provisional">
+            <div class="provisional-item">
+              Tạm tính: <span>{{ handleTotal() | price }}</span>
+            </div>
+            <div class="provisional-item">
+              Giảm giá: <span>{{ 20 | price }}</span>
+            </div>
+          </div>
+          <div class="cart-payment-total">
+            <span>Thành tiền:</span>
+            <div class="price-total">
+              <p>{{ handleTotal(20) | price }}</p>
+              <span>(Đã bao gồm VAT nếu có)</span>
+            </div>
+          </div>
+        </div>
+        <button class="cart-button" (click)="handleOrder()">tiến hành đặt hàng</button>
+      </div>
+    </div>
+
+    <ng-container *ngIf="cartList.length === 0">
+      <phanolink-cart-empty></phanolink-cart-empty>
+    </ng-container>
+  </div>
+</section>
