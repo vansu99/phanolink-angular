@@ -1,0 +1,121 @@
+@import 'src/styles/helpers/mixins';
+@import 'src/styles/helpers/variables';
+
+::ng-deep .userOrder {
+  flex: 1 0 0;
+}
+
+.user-order {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+
+  .user-header--light {
+    background-color: #8f9194;
+    right: 20px;
+    left: initial;
+    text-transform: capitalize;
+    width: 102px;
+    &:before {
+      left: -5px;
+      border-left: 5px solid transparent;
+      border-bottom-color: #58595b;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      right: -4px;
+      top: 0;
+      border-bottom: 7px solid #58595b;
+      border-right: 4px solid transparent;
+    }
+
+    i {
+      margin-right: 5px;
+      font-size: 13px;
+    }
+  }
+
+  &-search {
+    @include flex;
+    justify-content: flex-end;
+
+    span {
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 135px;
+      color: $text-fourth;
+      @include font-size(14px);
+    }
+  }
+
+  &-result {
+    padding: 30px 0 35px 30px;
+    @media #{$info-screen-768} {
+      padding-bottom: 25px;
+    }
+
+    span {
+      font-weight: bold;
+      color: #000000;
+    }
+  }
+
+  &-list {
+    .order-header {
+      display: grid;
+      grid-template-columns: 112px 112px 300px 112px 130px;
+      grid-column-gap: 20px;
+      border-top: 1px solid #e5e5e4;
+      border-bottom: 1px solid #e5e5e4;
+      @media #{$info-screen-768} {
+        display: none;
+      }
+    }
+
+    .order-header-item {
+      padding: 15px 0;
+      text-transform: capitalize;
+      text-align: center;
+    }
+
+    .order-content-item {
+      display: grid;
+      grid-template-columns: 112px 112px 299px 112px 130px;
+      grid-column-gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid #e5e5e4;
+      @media #{$info-screen-768} {
+        grid-template-columns: 1fr;
+        padding: 10px 30px;
+        &:first-child {
+          border-top: 1px solid #e5e5e4;
+        }
+        p {
+          &:not(:last-child) {
+            margin-bottom: 5px;
+          }
+          text-align: left;
+        }
+      }
+
+      .text-code {
+        font-weight: bold;
+        color: $bg-primary;
+      }
+    }
+  }
+
+  &-empty {
+    text-align: center;
+    padding: 0 0 40px;
+    @media #{$info-screen-768} {
+      padding: 0 0 30px;
+    }
+    h4 {
+      color: $text-primary;
+    }
+  }
+}
