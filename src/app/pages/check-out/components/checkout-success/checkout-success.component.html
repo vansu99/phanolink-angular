@@ -1,0 +1,18 @@
+<div class="checkout-content-inner">
+  <div class="checkout-success">
+    <div class="section-header section-header--center">
+      <div class="header-item checkout-header">
+        <h4>Thanh toán thành công</h4>
+      </div>
+    </div>
+    <p>Xin cảm ơn quý khách đã mua hàng tại Phanolink</p>
+    <p class="checkout-success-code">
+      Đơn hàng <span>#{{ idPayment.id }}</span> của bạn đã được đặt thành công!
+    </p>
+    <a [routerLink]="['']" class="back-button"><i class="fas fa-angle-left"></i>Quay lại trang chủ</a>
+  </div>
+  <div class="checkout-success-note">
+    <p>Để việc xử lý đơn hàng nhanh và thuận tiện hơn PHANOLINK sẽ xác nhận đơn hàng qua tin nhắn SMS và EMAIL.</p>
+    <p>Xin Quý khách vui lòng thường xuyên kiểm tra email và điện thoại.</p>
+  </div>
+</div>

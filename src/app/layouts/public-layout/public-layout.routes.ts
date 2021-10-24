@@ -28,6 +28,12 @@ export const publicRoutes: Routes = [
         loadChildren: () => import('@pages/cart/cart.module').then((m) => m.CartModule),
       },
       {
+        path: 'checkout',
+        loadChildren: () =>
+          import('@pages/check-out/check-out.module').then((m) => m.CheckOutModule),
+        canLoad: [AuthGuard],
+      },
+      {
         path: '**',
         component: NotFoundComponent,
         data: {

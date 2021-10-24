@@ -1,0 +1,35 @@
+@import 'src/styles/helpers/mixins';
+@import 'src/styles/helpers/variables';
+
+.checkout-success {
+  @include flex;
+  background-color: #fff;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 48px;
+  p {
+    @include font-size(20px);
+    color: $dark-text;
+    text-align: center;
+    span {
+      color: #ea4036;
+      font-weight: bold;
+      @include font-size(24px);
+    }
+  }
+
+  &-code {
+    margin-bottom: 35px;
+  }
+
+  &-note {
+    background-color: #ebebeb;
+    padding: 12px;
+    text-align: center;
+    p {
+      @include font-size(14px);
+      color: $text-primary;
+      line-height: 1.7;
+    }
+  }
+}
