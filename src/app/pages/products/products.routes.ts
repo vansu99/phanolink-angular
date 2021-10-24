@@ -17,7 +17,6 @@ export const productsRoutes: Routes = [
       },
       {
         path: ':categoryId',
-        pathMatch: 'full',
         data: {
           breadcrumb: (data: any) => `${data.cate.result[0]?.name}`,
         },
@@ -26,6 +25,7 @@ export const productsRoutes: Routes = [
           {
             path: '',
             component: ProductListComponent,
+            pathMatch: 'full',
             data: {
               breadcrumb: null,
             },

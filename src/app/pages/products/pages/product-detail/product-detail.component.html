@@ -2,17 +2,17 @@
   <!--  thumbnail-->
   <div class="product-detail-thumbnail product-detail-item">
     <div class="thumbnail-main">
-      <img [src]="productDetail.thumbnail" [alt]="productDetail.title" />
+      <img [src]="productDetail.img_path" [alt]="productDetail.title" />
     </div>
     <ul class="thumbnail-list">
       <li class="thumbnail-item">
-        <img [src]="productDetail.thumbnail" alt="" />
+        <img [src]="productDetail.img_path" alt="" />
       </li>
       <li class="thumbnail-item">
-        <img [src]="productDetail.thumbnail" alt="" />
+        <img [src]="productDetail.img_path" alt="" />
       </li>
       <li class="thumbnail-item">
-        <img [src]="productDetail.thumbnail" alt="" />
+        <img [src]="productDetail.img_path" alt="" />
       </li>
     </ul>
   </div>
@@ -20,7 +20,7 @@
   <!--  info-->
   <div class="product-detail-info product-detail-item">
     <div class="info-item info-top">
-      <h2>{{ productDetail.title }}</h2>
+      <h2>{{ productDetail.name }}</h2>
       <div class="info-top-group">
         <p>Thương hiệu: <span>Blackmores</span></p>
         <p>
@@ -38,7 +38,7 @@
       <p>
         Giá:
         <span class="info-bottom-price">{{
-          productDetail.price | discount: productDetail.discount | price
+          productDetail.original_price | discount: productDetail.discount | price
         }}</span>
       </p>
       <p>Tình trạng: <span class="info-bottom-status">Còn hàng</span></p>

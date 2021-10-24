@@ -69,12 +69,12 @@ export class ProductsService {
       });
   }
 
-  getDetailProduct(id: number | string | null) {
+  getDetailProduct(id: number | string) {
     return this.api.get(`products/${id}`).pipe(
       map((product) => {
         return {
-          ...product.body,
-          id: product.body.id.slice(0, 8),
+          ...product.body.data,
+          id: product.body.data.id,
         };
       })
     );
