@@ -18,7 +18,15 @@
       height: 432px;
       border-bottom: 1px solid #ebebeb;
       @media #{$info-screen-768} {
-        height: 250px;
+        height: 300px;
+      }
+
+      img {
+        height: 100%;
+        object-fit: contain;
+        @media #{$info-screen-768} {
+          height: 80%;
+        }
       }
     }
 
