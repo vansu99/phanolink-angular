@@ -1,1 +1,46 @@
-<p>user-orders works!</p>
+<section class="user-order">
+  <div class="user-header">Quản lý đơn hàng</div>
+  <div class="user-order-search">
+    <span>Xóa bộ lọc</span>
+    <div class="user-header user-header--light">
+      <i class="fas fa-search"></i>
+      Tìm kiếm
+    </div>
+  </div>
+
+  <!--  Order Search Result-->
+  <div class="user-order-result">
+    <p class="text text--light">
+      <span class="text">Tìm kiếm:</span> Đơn hàng 697318275 - từ 18/08/2019 đến 20/09/2019 - Sản
+      phẩm: blockchain
+    </p>
+  </div>
+
+  <!--  Order List-->
+  <div class="user-order-list" *ngIf="!!(orderList | async)?.length; else orderEmpty">
+    <ul class="order-header">
+      <li class="order-header-item text text--light">mã đơn hàng</li>
+      <li class="order-header-item text text--light">ngày mua</li>
+      <li class="order-header-item text text--light">sản phẩm</li>
+      <li class="order-header-item text text--light">tổng tiền</li>
+      <li class="order-header-item text text--light">trạng thái</li>
+    </ul>
+    <ul class="order-content">
+      <li class="order-content-item" *ngFor="let order of orderList | async">
+        <p class="text text-center text-code">{{ order.id }}</p>
+        <p class="text text--black text-center">{{ order.date_buy }}</p>
+        <p class="text text--black">
+          {{ order.products }}
+        </p>
+        <p class="text text--dartBold text-center">{{ order.total_price | price }}</p>
+        <p class="text text--black text-center">{{ order.status }}</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<ng-template #orderEmpty>
+  <div class="user-order-empty">
+    <h4>Bạn chưa có đơn hàng nào.</h4>
+  </div>
+</ng-template>

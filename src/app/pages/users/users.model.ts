@@ -6,3 +6,11 @@ export interface User {
   address?: string;
   email: string;
 }
+
+export interface OrderState {
+  date_buy: string;
+  id: number | string;
+  products: string;
+  total_price: number;
+  status: string
+}
