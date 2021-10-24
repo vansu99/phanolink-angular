@@ -1,0 +1,42 @@
+<phanolink-breadcrumb></phanolink-breadcrumb>
+<div class="checkout">
+  <div class="container">
+    <div class="checkout-wrapper">
+      <div class="checkout-content">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="checkout-sidebar">
+        <div class="sidebar-content">
+          <div class="sidebar-header">
+            <h4>Đơn hàng ({{ cartList?.length }} sản phẩm)</h4>
+            <button>Sửa</button>
+          </div>
+          <div class="sidebar-products">
+            <div class="product-item" *ngFor="let cart of cartList">
+              <div class="product-info">
+                <span>{{ cart.quantity }}x</span>
+                <p>{{cart.title}}</p>
+              </div>
+              <span>{{ cart.price | price: false }}</span>
+            </div>
+          </div>
+          <div class="sidebar-ship">
+            <div class="ship-item">
+              Tạm Tính: <span>{{ tempPrice | price: false }}</span>
+            </div>
+            <div class="ship-item">
+              Phí vận chuyển: <span>{{ 15 | price: false }}</span>
+            </div>
+          </div>
+          <div class="sidebar-total">
+            <span>Thành Tiền:</span>
+            <div class="total-payment">
+              <b>{{ totalPayment | price: false }}</b>
+              <p>(Đã bao gồm VAT nếu có)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
