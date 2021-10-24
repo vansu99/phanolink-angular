@@ -14,32 +14,40 @@
       <phanolink-product-notfound *ngIf="productList.length === 0 && !isLoading">
         Không tìm thấy kết quả cho "{{ searchTerm ? searchTerm : 'bạn.' }}"
       </phanolink-product-notfound>
+
       <div class="product-list" *ngIf="!isLoading || productList.length > 0; else loading">
         <div class="product-item" *ngFor="let product of productList">
-          <a class="product-link" [routerLink]="['/products/', product.categoryId, product.id]">
-            <div *ngIf="product.discount > 0" class="product-badge badge-sale">
+          <a
+            class="product-link"
+            [routerLink]="['/products/', product.category_id, 'de', product.id]"
+          >
+            <div *ngIf="!!product.discount" class="product-badge badge-sale">
               <img src="assets/images/sale2x.png" alt="saleoff" />
             </div>
-            <div class="product-badge badge-freeship">
+            <div *ngIf="product.is_free_shipping" class="product-badge badge-freeship">
               <img src="assets/images/ship2x.png" alt="freeship" />
             </div>
-            <div class="product-badge badge-gift">
+            <div *ngIf="product.is_gift" class="product-badge badge-gift">
               <img src="assets/images/gift-green.png" alt="gift" />
             </div>
             <div class="product-thumbnail">
               <div class="thumbnail-inner">
-                <img [src]="product.thumbnail" alt="decine 1" />
+                <img [src]="product.img_path" [alt]="product.name" />
               </div>
             </div>
             <div class="product-information">
               <div class="product-name">
-                <span>{{ product.title }}</span>
+                <span>{{ product.name }}</span>
               </div>
               <div class="product-price">
                 <span class="product-price-current">{{
-                  product.price | discount: product.discount | price
+                  product.discount === 0
+                    ? (product.original_price | price)
+                    : (product.original_price | discount: product.discount | price)
                 }}</span>
-                <span class="product-price-original">{{ product.price | price }}</span>
+                <span *ngIf="product.discount !== 0" class="product-price-original">{{
+                  product.original_price | price
+                }}</span>
               </div>
             </div>
           </a>

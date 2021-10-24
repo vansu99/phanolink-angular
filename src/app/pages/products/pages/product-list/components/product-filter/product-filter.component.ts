@@ -9,13 +9,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductFilterComponent {
   @Input() query = '';
   @Input() productLength = 0;
+  isActive = '';
 
-  constructor(private readonly route: ActivatedRoute, private readonly router: Router) {}
+  constructor(private readonly route: ActivatedRoute, private readonly router: Router) {
+    this.isActive = this.route.snapshot.queryParams.sort;
+  }
 
   sortProduct(obj: any) {
+    this.isActive = obj.sort;
+    const categoryId = this.route.snapshot.params.categoryId;
     const queryParam = { ...this.route.snapshot.queryParams, ...obj };
-    this.router.navigate(['/products', this.route.snapshot.params.categoryId], {
-      queryParams: queryParam,
-    });
+    if (categoryId) {
+      this.router.navigate(['/products', categoryId], { queryParams: queryParam });
+    } else {
+      this.router.navigate(['/products'], { queryParams: queryParam });
+    }
   }
 }

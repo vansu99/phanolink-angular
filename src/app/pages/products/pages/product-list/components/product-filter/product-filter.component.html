@@ -1,7 +1,7 @@
 <ng-container *ngIf="query.length > 0">
   <div class="product-search-result">
     Kết quả tìm kiếm cho <span>'{{ query }}'</span>:
-    <span class="result-count">{{ productLength }} kết quả</span>
+    <span class="result-count">{{ productLength || 0 }} kết quả</span>
   </div>
 </ng-container>
 
@@ -10,17 +10,20 @@
   <div class="product-filter-list">
     <a
       class="product-filter-item"
-      (click)="sortProduct({ _page: 1, _sort: 'price', _order: 'asc' })"
+      [class.active]="isActive === 'asc'"
+      (click)="sortProduct({ page: 1, sort: 'asc' })"
       >Giá thấp</a
     >
     <a
       class="product-filter-item"
-      (click)="sortProduct({ _page: 1, _sort: 'price', _order: 'desc' })"
+      [class.active]="isActive === 'desc'"
+      (click)="sortProduct({ page: 1, sort: 'desc' })"
       >Giá cao</a
     >
     <a
-      class="product-filter-item filter--hot"
-      (click)="sortProduct({ _page: 1, _sort: 'discount', _order: 'asc' })"
+      class="product-filter-item"
+      [class.active]="isActive === 'discount'"
+      (click)="sortProduct({ page: 1, sort: 'discount' })"
       >Khuyến mãi</a
     >
   </div>

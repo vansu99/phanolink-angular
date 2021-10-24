@@ -14,7 +14,7 @@ export class ProductSidebarResolver implements Resolve<boolean> {
     const id = route.params['categoryId'];
     return this.product.getCategory().pipe(
       map((cate: any) => {
-        const result = cate.filter((t: any) => t.id === id);
+        const result = cate.filter((t: any) => t.id === Number(id));
         return {
           result,
           category: cate,

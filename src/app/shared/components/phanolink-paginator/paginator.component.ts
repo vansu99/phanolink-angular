@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'phanolink-paginator',
@@ -27,22 +27,38 @@ export class PaginatorComponent implements OnChanges {
 
   // khi trigger vao tung page
   onChangePage(event: Event, path: string, page: number) {
-    this.router.navigate([path, this.route.snapshot.params.categoryId], {
-      relativeTo: this.route,
-      queryParams: { _page: page },
-      queryParamsHandling: 'merge',
-    });
+    if (this.route.snapshot.params.categoryId) {
+      this.router.navigate([path, this.route.snapshot.params.categoryId], {
+        relativeTo: this.route,
+        queryParams: { page },
+        queryParamsHandling: 'merge',
+      });
+    } else {
+      this.router.navigate([path], {
+        relativeTo: this.route,
+        queryParams: { page },
+        queryParamsHandling: 'merge',
+      });
+    }
     event.preventDefault();
   }
 
   // trigger icon next
   gotoNextPage(event: Event, path: string) {
     const nextPage = this.getCurrentPage() + 1;
-    this.router.navigate([path, this.route.snapshot.params.categoryId], {
-      relativeTo: this.route,
-      queryParams: { _page: nextPage },
-      queryParamsHandling: 'merge',
-    });
+    if (this.route.snapshot.params.categoryId) {
+      this.router.navigate([path, this.route.snapshot.params.categoryId], {
+        relativeTo: this.route,
+        queryParams: { page: nextPage },
+        queryParamsHandling: 'merge',
+      });
+    } else {
+      this.router.navigate([path], {
+        relativeTo: this.route,
+        queryParams: { page: nextPage },
+        queryParamsHandling: 'merge',
+      });
+    }
     event.preventDefault();
   }
 }

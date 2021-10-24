@@ -9,11 +9,10 @@
           *ngFor="let cate of categories"
           class="category-item"
           [routerLink]="['/products', cate.id]"
-          [queryParams]="{ _page: 1, categoryId: cate.id }"
           [class.active]="isLinkActive('/products', cate.id)"
         >
           <i class="fas fa-chevron-right category-icon"></i>
-          {{ cate.title }}
+          {{ cate.name }}
         </a>
       </div>
     </div>

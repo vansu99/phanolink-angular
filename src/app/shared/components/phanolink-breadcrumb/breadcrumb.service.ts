@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { BreadcrumbState } from '@shared/components/phanolink-breadcrumb/breadcrumb.model';
-import { ActivatedRouteSnapshot, Data, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import * as queryString from 'query-string';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Data, NavigationEnd, Router } from '@angular/router';
+import { BreadcrumbState } from '@shared/components/phanolink-breadcrumb/breadcrumb.model';
 
 @Injectable({
   providedIn: 'root',
@@ -28,18 +27,14 @@ export class BreadcrumbService {
   ) {
     if (route) {
       const curUrl = parentUrl.concat(route.url.map((item) => item.path));
-      const queryParam = queryString.stringify(route.queryParams);
 
       if (route.data.breadcrumb) {
         // neu co route dau tien
         const breadcrumb = {
           label: BreadcrumbService.getLabel(route.data),
-          url:
-            queryParam && route.data.breadcrumb !== 'Trang chủ'
-              ? '/' + curUrl.join('/') + `?${queryParam}`
-              : '/' + curUrl.join('/'),
+          url: '/' + curUrl.join('/'),
         };
-        breadcrumbs.push(breadcrumb);
+        breadcrumbs.push(<BreadcrumbState>breadcrumb);
       }
       this.addBreadcrumb(route.firstChild, curUrl, breadcrumbs);
     }
