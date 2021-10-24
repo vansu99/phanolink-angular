@@ -1,0 +1,295 @@
+@import 'src/styles/helpers/mixins';
+@import 'src/styles/helpers/variables';
+
+::ng-deep .userInfo {
+  flex: 1 0 0;
+}
+
+.user-info {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+  padding: 0 70px 43px;
+  @media #{$info-screen-992} {
+    padding: 0 30px 20px;
+  }
+
+  &-form {
+    padding-top: 63px;
+
+    .form-content {
+      @include flex;
+      justify-content: space-between;
+      @media #{$info-screen-768} {
+        flex-direction: column;
+      }
+    }
+
+    .form-left {
+      width: calc(60% - 40px);
+      @media #{$info-screen-768} {
+        width: 100%;
+      }
+    }
+
+    .form-right {
+      width: calc(40% - 40px);
+      @media #{$info-screen-768} {
+        width: 100%;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-label {
+      position: relative;
+      display: inline-block;
+      @include font-size(16px);
+      color: $dark-text;
+      margin-bottom: 6px;
+
+      &:before {
+        content: '*';
+        position: relative;
+        left: 0;
+        top: -5px;
+        font-weight: bold;
+        color: $text-fourth;
+      }
+    }
+
+    .label--light {
+      color: #808081;
+      margin-bottom: 40px;
+      @include font-size(14.39px);
+      @media #{$info-screen-768} {
+        margin-bottom: 10px;
+      }
+    }
+
+    .label--optional {
+      &:before {
+        content: '';
+      }
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 9px 15px;
+      outline: none;
+      font-family: $font-intel;
+      @include font-size(14.39px);
+      color: $light-text;
+      border-radius: 5px;
+      border: 1px solid #e5e5e4;
+
+      &:focus {
+        border-color: $bg-primary;
+      }
+    }
+
+    .form-gender {
+      position: relative;
+      width: 50%;
+      height: 40px;
+      @include flexCenter;
+      overflow: hidden;
+      border: 1px solid #e5e5e4;
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-right: 0;
+      }
+      &:last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+      label {
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        @include flexCenter;
+        @include font-size(16px);
+        color: $light-text;
+        i {
+          margin-top: 4px;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .form-radio {
+      &:checked + label {
+        font-weight: bold;
+        background-color: #808081;
+        color: #fff;
+      }
+    }
+
+    .form-dob-wrapper {
+      @include flex;
+      justify-content: space-between;
+    }
+
+    .form-dob {
+      width: calc(33.33% - 15px);
+      position: relative;
+      height: 40px;
+      &:after {
+        content: '\f077';
+        font-family: 'Font Awesome 5 Free', sans-serif;
+        position: absolute;
+        right: 15px;
+        top: 11px;
+        font-size: 10px;
+        color: $light-text;
+        font-weight: 900;
+        z-index: 2;
+      }
+      &:before {
+        content: '\f078';
+        font-family: 'Font Awesome 5 Free', sans-serif;
+        position: absolute;
+        right: 15px;
+        top: 17px;
+        font-size: 10px;
+        color: $light-text;
+        font-weight: 900;
+        z-index: 2;
+      }
+    }
+
+    .form-select {
+      width: 100%;
+      height: 100%;
+      padding: 0 15px 0 20px;
+      border-radius: 5px;
+      border: 1px solid #e5e5e4;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      position: relative;
+      z-index: 1;
+      color: #808081;
+      @include font-size(14.39px);
+      @media #{$info-screen-992} {
+        padding-left: 10px;
+      }
+
+      &:focus {
+        border-color: $bg-primary;
+      }
+    }
+
+    .form-button {
+      display: block;
+      width: 100%;
+      height: 50px;
+      @include flexCenter;
+      color: #fff;
+      text-transform: uppercase;
+      outline: none;
+      border: 0;
+      line-height: 1.4;
+      border-radius: 5px;
+      background-color: $bg-primary;
+      @include font-size(18px);
+      font-family: $font-intel-bold;
+      @media #{$info-screen-768} {
+        height: 30px;
+        font-size: 13px;
+      }
+      i {
+        margin-top: 2px;
+        margin-right: 8px;
+      }
+      &:hover {
+        opacity: 0.95;
+      }
+    }
+
+    // Form right
+    .form-right {
+      &-checkbox {
+        @include flex;
+        align-items: center;
+        padding: 38px 0 23px;
+        input {
+          padding: 0;
+          height: initial;
+          width: initial;
+          margin-bottom: 0;
+          display: none;
+          cursor: pointer;
+          &:checked + label:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 7px;
+            left: 6px;
+            width: 6px;
+            height: 12px;
+            border: solid #fff;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+            @media #{$info-screen-768} {
+              top: 3px;
+            }
+          }
+        }
+
+        label {
+          position: relative;
+          @include font-size(16px);
+          color: $dark-text;
+          &:before {
+            content: '';
+            -webkit-appearance: none;
+            background-color: $bg-primary;
+            border-radius: 4px;
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            position: relative;
+            vertical-align: bottom;
+            cursor: pointer;
+            margin-right: 7px;
+          }
+        }
+      }
+      h3 {
+        @include flex;
+        align-items: center;
+        position: relative;
+        padding: 38px 0 23px;
+        @include font-size(16px);
+        color: $dark-text;
+        @media #{$info-screen-768} {
+          padding-top: 20px;
+        }
+
+        &:before {
+          content: '';
+          position: relative;
+          display: inline-block;
+          left: 0;
+          width: 18px;
+          height: 18px;
+          border-radius: 5px;
+          margin-right: 7px;
+          background-color: $bg-primary;
+        }
+      }
+    }
+
+    // Form Error
+    .form-error {
+      padding: 7px 0;
+      color: $text-fourth;
+      font-size: 13px;
+    }
+  }
+}

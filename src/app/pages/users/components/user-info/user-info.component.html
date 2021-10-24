@@ -1,0 +1,191 @@
+<section class="user-info">
+  <div class="user-header">Thông tin tài khoản</div>
+  <div class="user-info-form">
+    <form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div class="form-content">
+        <div class="form-left">
+          <div class="form-group">
+            <label for="name" class="form-label">Họ tên</label>
+            <input
+              type="text"
+              id="name"
+              class="form-input"
+              placeholder="Lê Duy Lân"
+              formControlName="name"
+            />
+            <div
+              *ngIf="
+                userInfoForm.get('name')?.errors && userInfoForm.controls['name']?.touched
+              "
+            >
+              <div class="form-error" *ngIf="userInfoForm.controls['name'].errors?.required">
+                Yêu cầu nhập họ tên
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              placeholder="lan@phanopharmacy.com"
+              formControlName="email"
+            />
+            <div
+              *ngIf="userInfoForm.get('email')?.errors && userInfoForm.controls['email']?.touched"
+            >
+              <div class="form-error" *ngIf="userInfoForm.controls['email'].errors?.required">
+                Yêu cầu nhập email
+              </div>
+              <div class="form-error" *ngIf="userInfoForm.controls['email'].errors?.email">
+                Email không hợp lệ
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="form-label">Số điện thoại</label>
+            <input
+              type="text"
+              id="phone"
+              class="form-input"
+              placeholder="0354184544"
+              formControlName="phone"
+            />
+            <div
+              *ngIf="userInfoForm.get('phone')?.errors && userInfoForm.controls['phone']?.touched"
+            >
+              <div class="form-error" *ngIf="userInfoForm.controls['phone'].errors?.required">
+                Yêu cầu nhập số điện thoại
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Giới tính</label>
+            <div style="display: flex">
+              <div class="form-gender">
+                <input
+                  type="radio"
+                  value="male"
+                  id="gender-male"
+                  class="form-radio"
+                  formControlName="gender"
+                />
+                <label for="gender-male">
+                  <i class="fas fa-male"></i>
+                  Nam
+                </label>
+              </div>
+              <div class="form-gender">
+                <input
+                  type="radio"
+                  value="female"
+                  id="gender-female"
+                  class="form-radio"
+                  formControlName="gender"
+                />
+                <label for="gender-female">
+                  <i class="fas fa-female"></i>
+                  Nữ
+                </label>
+              </div>
+            </div>
+            <div
+              *ngIf="userInfoForm.get('gender')?.errors && userInfoForm.controls['gender']?.touched"
+            >
+              <div class="form-error" *ngIf="userInfoForm.controls['gender'].errors?.required">
+                Yêu cầu chọn giới tính
+              </div>
+            </div>
+          </div>
+          <div class="form-group" formGroupName="birthday">
+            <label class="form-label">Ngày sinh</label>
+            <div class="form-dob-wrapper">
+              <div class="form-dob">
+                <select name="date" class="form-select" formControlName="day">
+                  <option value="">Ngày</option>
+                  <option *ngFor="let day of days" value="{{ day }}">{{ day }}</option>
+                </select>
+              </div>
+              <div class="form-dob">
+                <select name="month" class="form-select" formControlName="month">
+                  <option value="">Tháng</option>
+                  <option *ngFor="let month of months" value="{{ month }}">
+                    Tháng {{ month }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-dob">
+                <select name="year" class="form-select" formControlName="year">
+                  <option value="">Năm</option>
+                  <option *ngFor="let year of years" value="{{ year }}">{{ year }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <label class="form-label label--light">Bắt buộc</label>
+        </div>
+        <div class="form-right">
+          <div class="form-right-checkbox">
+            <input type="checkbox" id="change_password" formControlName="isChangePassword">
+            <label for="change_password">Thay đổi mật khẩu</label>
+          </div>
+          <div class="form-group">
+            <label for="old_password" class="form-label label--optional">Mật khẩu cũ</label>
+            <input
+              type="password"
+              id="old_password"
+              class="form-input"
+              placeholder="Nhập mật khẩu cũ"
+              formControlName="old_password"
+            />
+          </div>
+          <div class="form-group">
+            <label for="new_password" class="form-label label--optional">Mật khẩu mới</label>
+            <input
+              type="password"
+              id="new_password"
+              class="form-input"
+              placeholder="Nhập mật khẩu mới"
+              formControlName="new_password"
+            />
+          </div>
+          <div class="form-group">
+            <label for="new_password_confirmation" class="form-label label--optional"
+            >Xác nhận mật khẩu mới</label
+            >
+            <input
+              type="password"
+              id="new_password_confirmation"
+              class="form-input"
+              placeholder="Nhập lại mật khẩu mới"
+              formControlName="new_password_confirmation"
+            />
+            <div
+              *ngIf="
+                userInfoForm.get('new_password_confirmation')?.errors &&
+                userInfoForm.controls['new_password_confirmation']?.touched
+              "
+            >
+              <div
+                class="form-error"
+                *ngIf="userInfoForm.controls['new_password_confirmation'].errors?.required"
+              >
+                Yêu cầu nhập mật khẩu
+              </div>
+              <div
+                class="form-error"
+                *ngIf="userInfoForm.controls['new_password_confirmation'].errors?.notSame"
+              >
+                Mật khẩu mới không trùng khớp
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="form-button">
+        <i class="far fa-save"></i>Cập nhật thay đổi
+      </button>
+    </form>
+  </div>
+</section>
