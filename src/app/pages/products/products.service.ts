@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import * as queryString from 'query-string';
 import { PaginatorService } from '@shared/components/phanolink-paginator/paginator.service';
-import { ApiService } from '../../cores/services/api.service';
+import { ApiService } from '@core/services/api.service';
 import { finalize, map } from 'rxjs/operators';
 
 @Injectable({
@@ -55,9 +55,9 @@ export class ProductsService {
   }
 
   getCategory() {
-    return this.api.get('categories').pipe(
+    return this.api.get('home/categories').pipe(
       map((cate) => {
-        return cate.body;
+        return cate.body.data;
       })
     );
   }

@@ -3,20 +3,8 @@
     <div class="banner-wrapper">
       <div class="banner-left">
         <owl-carousel-o [options]="customOptions" class="carouselClass">
-          <ng-template carouselSlide>
-            <img src="assets/images/banner-img.png" alt="banner phanolink" />
-          </ng-template>
-          <ng-template carouselSlide>
-            <img src="assets/images/banner-img.png" alt="banner phanolink" />
-          </ng-template>
-          <ng-template carouselSlide>
-            <img src="assets/images/banner-img.png" alt="banner phanolink" />
-          </ng-template>
-          <ng-template carouselSlide>
-            <img src="assets/images/banner-img.png" alt="banner phanolink" />
-          </ng-template>
-          <ng-template carouselSlide>
-            <img src="assets/images/banner-img.png" alt="banner phanolink" />
+          <ng-template carouselSlide *ngFor="let slide of sliderList | async">
+            <img [src]="slide.img_path" alt="banner phanolink" />
           </ng-template>
         </owl-carousel-o>
       </div>
