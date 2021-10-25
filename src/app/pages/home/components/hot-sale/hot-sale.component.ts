@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import {HomeService} from "@pages/home/home.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'phanolink-hot-sale',
   templateUrl: './hot-sale.component.html',
   styleUrls: ['./hot-sale.component.scss'],
 })
-export class HotSaleComponent {
+export class HotSaleComponent implements OnInit {
   customOption: OwlOptions = {
     loop: true,
     dots: true,
@@ -38,5 +40,13 @@ export class HotSaleComponent {
       },
     },
   };
-  constructor() {}
+  hotProduct!: Observable<any>
+
+  constructor(private readonly home: HomeService) {
+    this.hotProduct = this.home.productHot$
+  }
+
+  ngOnInit(): void {
+    this.home.getProductHot()
+  }
 }

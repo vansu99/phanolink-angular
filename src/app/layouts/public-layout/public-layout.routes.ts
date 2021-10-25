@@ -31,7 +31,7 @@ export const publicRoutes: Routes = [
         path: 'checkout',
         loadChildren: () =>
           import('@pages/check-out/check-out.module').then((m) => m.CheckOutModule),
-        //canLoad: [AuthGuard],
+        canLoad: [AuthGuard],
       },
       {
         path: '**',
