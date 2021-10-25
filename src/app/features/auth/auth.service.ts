@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { STORAGE_KEYS, StorageService } from '../../cores/services/storage.service';
-import { RegisterState, UserState } from '@features/auth/auth.model';
-import { ApiService } from '../../cores/services/api.service';
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from '@core/services/api.service';
+import { RegisterState, UserState } from '@features/auth/auth.model';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { STORAGE_KEYS, StorageService } from '@core/services/storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -55,7 +55,7 @@ export class AuthService {
         this.isAuthenticatedSubject.next(true);
         // set currentUser
         this.setUser(user);
-        this.errorMsg.next('')
+        this.errorMsg.next('');
         if (this.router.url === '/cart') {
           this.router.navigate(['/checkout/success']);
         } else if (this.router.url === '/admin/login') {

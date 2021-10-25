@@ -35,11 +35,11 @@ export class AuthGuard implements CanActivate, CanLoad {
   private isAuthenticate() {
     return of(this.auth.isAuthenticate()).pipe(
       tap((isAuthenticated) => {
-        if (!isAuthenticated && this.router.config[0].path === 'admin') {
-          this.router.navigate(['/admin/login']);
-        } else if (!isAuthenticated) {
+        if (!isAuthenticated) {
           // not loggedIn -> redirect home page
           this.router.navigate(['']);
+        } else if (!isAuthenticated && this.router.config[0].path === 'admin') {
+          this.router.navigate(['/admin/login']);
         }
       })
     );

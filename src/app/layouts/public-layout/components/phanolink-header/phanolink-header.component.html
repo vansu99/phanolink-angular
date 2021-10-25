@@ -169,9 +169,9 @@
           </button>
         </div>
         <div class="header-cart">
-          <a class="header-cart-item">
+          <a class="header-cart-item" [routerLink]="['/cart']">
             <img src="assets/images/cart2x.png" alt="" />
-            <span class="header-cart-badge">0</span>
+            <span class="header-cart-badge">{{ cartLength }}</span>
           </a>
         </div>
       </div>

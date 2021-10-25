@@ -38,7 +38,9 @@
       <p>
         Giá:
         <span class="info-bottom-price">{{
-          productDetail.original_price | discount: productDetail?.discount | price
+          productDetail.discount
+            ? (productDetail.original_price | discount: productDetail?.discount | price)
+            : (productDetail.original_price | price)
         }}</span>
       </p>
       <p>Tình trạng: <span class="info-bottom-status">Còn hàng</span></p>

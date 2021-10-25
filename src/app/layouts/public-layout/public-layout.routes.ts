@@ -12,7 +12,7 @@ export const publicRoutes: Routes = [
       {
         path: '',
         loadChildren: () => import('@pages/home/home.module').then((m) => m.HomeModule),
-        pathMatch: 'full',
+        pathMatch: 'full'
       },
       {
         path: 'products',
