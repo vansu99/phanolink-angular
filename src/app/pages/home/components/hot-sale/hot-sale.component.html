@@ -8,38 +8,11 @@
   </div>
   <div class="hot-sale-slides">
     <owl-carousel-o [options]="customOption" class="hot-sale-list">
-      <!--      <ng-container *ngFor="let slide of slides">-->
-      <!--        <ng-template carouselSlide>-->
-      <!--          <img [src]="slide.value" alt="abc">-->
-      <!--        </ng-template>-->
-      <!--      </ng-container>-->
-      <ng-template carouselSlide>
-        <img src="assets/images/hot-sale-slide-1-2x.png" alt="hot sale phanolink" />
-      </ng-template>
-      <ng-template carouselSlide>
-        <img src="assets/images/hot-sale-slide-2-2x.png" alt="hot sale phanolink" />
-      </ng-template>
-      <ng-template carouselSlide>
-        <img src="assets/images/hot-sale-slide-3-2x.png" alt="hot sale phanolink" />
-      </ng-template>
-      <ng-template carouselSlide>
-        <img src="assets/images/hot-sale-slide-1-2x.png" alt="hot sale phanolink" />
-      </ng-template>
-      <ng-template carouselSlide>
-        <img src="assets/images/hot-sale-slide-1-2x.png" alt="hot sale phanolink" />
-      </ng-template>
-      <ng-template carouselSlide>
-        <img src="assets/images/hot-sale-slide-1-2x.png" alt="hot sale phanolink" />
-      </ng-template>
-      <ng-template carouselSlide>
-        <img src="assets/images/hot-sale-slide-1-2x.png" alt="hot sale phanolink" />
-      </ng-template>
-      <ng-template carouselSlide>
-        <img src="assets/images/hot-sale-slide-1-2x.png" alt="hot sale phanolink" />
-      </ng-template>
-      <ng-template carouselSlide>
-        <img src="assets/images/hot-sale-slide-1-2x.png" alt="hot sale phanolink" />
-      </ng-template>
+      <ng-container *ngFor="let item of hotProduct | async">
+        <ng-template carouselSlide>
+          <img [src]="item.img_path" [alt]="item.name" />
+        </ng-template>
+      </ng-container>
     </owl-carousel-o>
   </div>
 </section>
