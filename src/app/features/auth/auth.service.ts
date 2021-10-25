@@ -58,6 +58,9 @@ export class AuthService {
         this.errorMsg.next('');
         if (this.router.url === '/admin/login') {
           this.router.navigate(['/admin/dashboard']);
+        } else if (this.router.url === '/cart') {
+          this.dialog.closeAll();
+          return;
         } else {
           this.router.navigate(['']);
         }
