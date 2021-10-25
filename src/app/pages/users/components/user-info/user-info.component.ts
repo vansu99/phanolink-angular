@@ -12,6 +12,7 @@ import { AuthService } from '@features/auth/auth.service';
 import { generateYear } from '@shared/utils/generateYear';
 import { UsersService } from '@pages/users/users.service';
 import { AlertMessageService } from '@core/services/alert-message.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'phanolink-user-info',
@@ -63,10 +64,10 @@ export class UserInfoComponent implements OnInit {
   }
 
   updateForm(userInfo: UserState) {
-    const day = userInfo?.birthday?.slice(0, 1).replace('0', '');
-    const month = userInfo?.birthday?.slice(2, 3).replace('0', '');
-    const year = userInfo?.birthday?.slice(4);
-    console.log(month, year, userInfo?.birthday);
+    const date = moment(userInfo?.birthday, 'YYYY/MM/DD');
+    const day = date.format('D');
+    const month = date.format('M');
+    const year = date.format('Y');
 
     this.userInfoForm.patchValue({
       name: userInfo?.name,
@@ -97,7 +98,7 @@ export class UserInfoComponent implements OnInit {
         email,
         phone,
         gender,
-        birthday: Object.values(birthday).join('/'),
+        birthday: Object.values(birthday).reverse().join('-'),
       };
       this.users.updateUserInfo(newValueFormNotPwd).subscribe((res) => {
         if (res.body.success) {
@@ -107,7 +108,7 @@ export class UserInfoComponent implements OnInit {
     } else {
       const newValueForm = {
         ...this.userInfoForm.value,
-        birthday: Object.values(birthday).join('/'),
+        birthday: Object.values(birthday).reverse().join('-'),
       };
       delete newValueForm.isChangePassword;
       this.users.updateUserInfo(newValueForm).subscribe((res) => {

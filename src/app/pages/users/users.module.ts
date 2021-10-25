@@ -18,6 +18,6 @@ import { PhanolinkBreadcrumbModule } from '@shared/components/phanolink-breadcru
     ReactiveFormsModule,
     PhanolinkBreadcrumbModule,
     RouterModule.forChild(usersRoutes),
-  ],
+  ]
 })
 export class UsersModule {}
