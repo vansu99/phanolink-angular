@@ -2,6 +2,8 @@ import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { CartState } from '@pages/cart/cart.model';
 import { STORAGE_KEYS, StorageService } from '@core/services/storage.service';
+import { ApiService } from '@core/services/api.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +21,11 @@ export class CartService {
   );
   paymentCart$ = this.paymentCart.asObservable();
 
-  constructor(private readonly storage: StorageService) {}
+  constructor(
+    private readonly storage: StorageService,
+    private readonly api: ApiService,
+    private readonly router: Router
+  ) {}
 
   addToCart(product: CartState) {
     const index = this.cartList.findIndex((cart: CartState) => cart.id === product.id);
@@ -52,11 +58,16 @@ export class CartService {
   }
 
   setPaymentCart(value: any) {
-    console.log(value)
-    // call api create order
-    this.paymentCart.next(value);
-    this.storage.setObject(STORAGE_KEYS.PAYMENT, value);
-    this.cartListSubject.next([]);
-    this.storage.remove(STORAGE_KEYS.CART);
+    return this.api.post('order', value).subscribe((response) => {
+      const order = {
+        ...value,
+        id: response.body.data.id,
+      };
+      this.paymentCart.next(order);
+      this.storage.setObject(STORAGE_KEYS.PAYMENT, order);
+      this.cartListSubject.next([]);
+      this.storage.remove(STORAGE_KEYS.CART);
+      this.router.navigate(['/checkout/success']);
+    });
   }
 }

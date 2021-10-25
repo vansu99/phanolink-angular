@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-checkout-fail',
+  selector: 'phanolink-checkout-fail',
   templateUrl: './checkout-fail.component.html',
-  styleUrls: ['./checkout-fail.component.scss']
+  styleUrls: ['./checkout-fail.component.scss', '../../check-out.component.scss'],
 })
-export class CheckoutFailComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class CheckoutFailComponent {
+  constructor() {}
 }
