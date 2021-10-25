@@ -1,0 +1,13 @@
+<div class="confirm">
+  <div class="confirm-header">
+    <h4 class="confirm-label">Thông báo</h4>
+    <mat-icon class="confirm-icon" id="close-icon" (click)="closeDialog()">close</mat-icon>
+  </div>
+  <div class="confirm-content">
+    <p>{{ data.message }}</p>
+  </div>
+  <div class="confirm-actions">
+    <button mat-flat-button color="primary" id="no-button" [mat-dialog-close]="false">NO</button>
+    <button mat-flat-button color="accent" id="yes-button" [mat-dialog-close]="true">YES</button>
+  </div>
+</div>

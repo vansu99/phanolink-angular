@@ -12,5 +12,5 @@ export interface OrderState {
   id: number | string;
   products: string;
   total_price: number;
-  status: string
+  status: number
 }
