@@ -1,0 +1,27 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.admin-container {
+  max-width: 1490px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+.admin-login {
+  max-width: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #d1d1d1;
+  padding: 20px;
+  border-radius: 4px;
+
+  &-heading {
+    font-family: $font-intel-bold;
+    @include font-size(26px);
+    color: $bg-primary;
+    margin-bottom: 15px;
+  }
+}

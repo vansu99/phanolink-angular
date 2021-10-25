@@ -1,0 +1,16 @@
+<mat-toolbar class="header">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="header-logo">Phanolink</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon header-icon">
+    <mat-icon>notifications_none</mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="header-icon">
+    <mat-icon>person_outline</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="handleLogout()">Đăng xuất</button>
+  </mat-menu>
+</mat-toolbar>

@@ -33,7 +33,9 @@
           {{ order.products }}
         </p>
         <p class="text text--dartBold text-center">{{ order.total_price | price }}</p>
-        <p class="text text--black text-center">{{ order.status }}</p>
+        <p class="text text--black text-center">
+          {{ order.status === 0 ? 'Chưa vận chuyển' : 'Giao hàng thành công' }}
+        </p>
       </li>
     </ul>
   </div>

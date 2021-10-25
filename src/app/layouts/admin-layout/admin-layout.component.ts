@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { filter } from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-layout',
+  selector: 'phanolink-admin-layout',
   templateUrl: './admin-layout.component.html',
-  styleUrls: ['./admin-layout.component.scss']
+  styleUrls: ['./admin-layout.component.scss'],
 })
-export class AdminLayoutComponent implements OnInit {
+export class AdminLayoutComponent {
+  isLoginActive = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private readonly router: Router) {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        if (event.url === '/admin/dashboard') {
+          this.isLoginActive = true;
+        }
+      });
   }
-
 }

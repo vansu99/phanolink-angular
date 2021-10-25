@@ -1,0 +1,35 @@
+@import 'src/styles/helpers/mixins';
+@import 'src/styles/helpers/variables';
+
+.confirm {
+  &-header {
+    @include flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    h4 {
+      font-weight: 600;
+    }
+  }
+
+  &-content {
+    margin-bottom: 15px;
+    p {
+      font-size: 15px;
+      color: $text-primary;
+    }
+  }
+
+  &-actions {
+    text-align: right;
+    button {
+      margin-left: 10px;
+    }
+  }
+
+  &-icon {
+    cursor: pointer;
+    color: $text-primary;
+    font-size: 19px;
+    line-height: unset;
+  }
+}

@@ -6,10 +6,11 @@ import { PhanolinkSliderComponent } from './components/phanolink-slider/phanolin
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { PricePipe } from './pipes/price.pipe';
 import { DiscountPipe } from './pipes/discount.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [ChangeTitleFormPipe, PhanolinkSliderComponent, PricePipe, DiscountPipe],
-  imports: [CommonModule, RouterModule, CarouselModule],
+  imports: [CommonModule, RouterModule, CarouselModule, MatDialogModule],
   exports: [ChangeTitleFormPipe, PhanolinkSliderComponent, PricePipe, DiscountPipe],
 })
 export class SharedModule {}
