@@ -1,0 +1,35 @@
+$bg-primary: #01adab;
+$font-intel: 'UTM Neo Sans Intel', sans-serif;
+$font-intel-bold: 'UTM Neo Sans Intel Bold', sans-serif;
+$font-intel-italic: 'UTM Neo Sans Intel Italic', sans-serif;
+$font-myriad-regular: 'Myriad-Pro-Regular', sans-serif;
+$text-primary: #505050;
+$text-second: #777777;
+$text-third: #020202;
+$text-fourth: #e32e43;
+$text-fifth: #757575;
+$text-sixth: #595959;
+$light-text: #808081;
+$dark-text: #434343;
+$hover-color-facebook: hsl(208, 92%, 53%);
+$hover-color-youtube: hsl(348, 97%, 39%);
+$hover-color-twitter: hsl(203, 89%, 53%);
+
+// Animations
+$duration: 0.8s;
+$ease-in-out: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+$ease-in: cubic-bezier(0.47, 0, 0.745, 0.715);
+$ease-out: cubic-bezier(0.39, 0.575, 0.565, 1);
+
+// Media queries
+$info-tablet-horizontal: 'only screen and (max-width : 1160px)';
+$info-tablet-vertical: 'only screen and (max-width : 991px)';
+$info-phone: 'only screen and (max-width : 767px)';
+$info-500: 'only screen and (max-width: 500px)';
+$info-phone-4: 'only screen and (max-width : 320px)';
+
+$info-screen-1200: 'only screen and (max-width : 1199px)';
+$info-screen-992: 'only screen and (max-width : 991px)';
+$info-screen-768: 'only screen and (max-width : 767px)';
+$info-screen-575: 'only screen and (max-width : 575px)';
+$info-screen-375: 'only screen and (max-width : 375px)';

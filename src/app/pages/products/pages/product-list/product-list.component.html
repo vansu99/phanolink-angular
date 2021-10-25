@@ -1,0 +1,75 @@
+<div class="products-wrapper">
+  <!--    product sidebar-->
+  <phanolink-product-sidebar></phanolink-product-sidebar>
+
+  <div class="products-content">
+    <!--    product filter-->
+    <phanolink-product-filter
+      [query]="searchTerm"
+      [productLength]="productLength"
+    ></phanolink-product-filter>
+
+    <section class="product">
+      <!--   product list-->
+      <phanolink-product-notfound *ngIf="productList.length === 0 && !isLoading">
+        Không tìm thấy kết quả cho "{{ searchTerm ? searchTerm : 'bạn.' }}"
+      </phanolink-product-notfound>
+
+      <div class="product-list" *ngIf="!isLoading || productList.length > 0; else loading">
+        <div class="product-item" *ngFor="let product of productList">
+          <a
+            class="product-link"
+            [routerLink]="['/products/', product.category_id, 'de', product.id]"
+          >
+            <div *ngIf="!!product.discount" class="product-badge badge-sale">
+              <p class="badge-sale-item">
+                {{ product.discount }}<span>%</span>
+              </p>
+            </div>
+            <div *ngIf="product.is_free_shipping" class="product-badge badge-freeship">
+              <img src="assets/images/ship2x.png" alt="freeship" />
+            </div>
+            <div *ngIf="product.is_gift" class="product-badge badge-gift">
+              <img src="assets/images/gift-green.png" alt="gift" />
+            </div>
+            <div class="product-thumbnail">
+              <div class="thumbnail-inner">
+                <img [src]="product.img_path" [alt]="product.name" />
+              </div>
+            </div>
+            <div class="product-information">
+              <div class="product-name">
+                <span>{{ product.name }}</span>
+              </div>
+              <div class="product-price">
+                <span class="product-price-current">{{
+                  product.discount === 0
+                    ? (product.original_price | price)
+                    : (product.original_price | discount: product.discount | price)
+                }}</span>
+                <span *ngIf="product.discount !== 0" class="product-price-original">{{
+                  product.original_price | price
+                }}</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- product pagination-->
+      <ng-container *ngIf="paginator">
+        <phanolink-paginator
+          [current]="paginator.currentPage"
+          [perPage]="paginator.limit"
+          [totalPage]="paginator.totalPage"
+        ></phanolink-paginator>
+      </ng-container>
+    </section>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="skeleton">
+    <phanolink-skeleton *ngFor="let skeleton of skeletonList"></phanolink-skeleton>
+  </div>
+</ng-template>

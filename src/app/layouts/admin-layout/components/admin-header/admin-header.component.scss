@@ -1,0 +1,19 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.header {
+  margin-bottom: 20px;
+  &-logo {
+    font-family: $font-intel;
+    color: $text-primary;
+  }
+  &-icon {
+    color: #434343;
+    &:last-child {
+      margin-left: 15px;
+    }
+  }
+}

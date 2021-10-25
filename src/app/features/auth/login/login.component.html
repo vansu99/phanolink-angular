@@ -1,0 +1,57 @@
+<section class="login">
+  <p class="login-desc">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim a
+  </p>
+  <div class="login-form">
+    <ng-container *ngIf="error | async">
+      <div class="form-error-content">{{ error | async }}</div>
+    </ng-container>
+    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div class="form-group">
+        <label class="form-label" for="email">Email / SĐT</label>
+        <input
+          type="text"
+          id="email"
+          class="form-input"
+          placeholder="Nhập email hoặc số điện thoại"
+          formControlName="email"
+        />
+        <div *ngIf="formLogin.get('email')?.errors && formLogin.controls['email']?.touched">
+          <div class="form-error" *ngIf="formLogin.controls['email'].errors?.required">
+            Yêu cầu nhập email hoặc số điện thoại
+          </div>
+          <div class="form-error" *ngIf="formLogin.controls['email'].errors?.invalidField">
+            Email hoặc Số điện thoại không hợp lệ
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Mật khẩu</label>
+        <input
+          type="password"
+          id="password"
+          class="form-input"
+          formControlName="password"
+          placeholder="Mật khẩu từ 6 đến 32 ký tự"
+        />
+        <div *ngIf="formLogin.get('password')?.errors && formLogin.controls['password']?.touched">
+          <div class="form-error" *ngIf="formLogin.controls['password'].errors?.required">
+            Yêu cầu nhập mật khẩu
+          </div>
+          <div
+            class="form-error"
+            *ngIf="
+              formLogin.controls['password'].errors?.minlength ||
+              formLogin.controls['password'].errors?.maxlength
+            "
+          >
+            Mật khẩu phải từ 6 đến 32 ký tự
+          </div>
+        </div>
+      </div>
+      <p>Quên mật khẩu? Nhấn vào <a>đây</a></p>
+      <button type="submit" class="form-button" [disabled]="formLogin.invalid">Đăng nhập</button>
+    </form>
+  </div>
+</section>

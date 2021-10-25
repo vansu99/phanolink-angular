@@ -1,0 +1,51 @@
+<section class="banner">
+  <div class="container">
+    <div class="banner-wrapper">
+      <div class="banner-left">
+        <owl-carousel-o [options]="customOptions" class="carouselClass">
+          <ng-template carouselSlide *ngFor="let slide of sliderList | async">
+            <img [src]="slide.img_path" alt="banner phanolink" />
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+      <div class="banner-right">
+        <div class="banner-icons">
+          <img src="assets/images/banner_icon1-2x.png" class="banner-icons-image" alt="tuvan" />
+          <p>
+            Dược sĩ <br />
+            tư vấn
+          </p>
+        </div>
+        <div class="banner-icons">
+          <img src="assets/images/banner_icon2-2x.png" class="banner-icons-image" alt="chinhhang" />
+          <p>
+            Sản phẩm <br />
+            chính hãng
+          </p>
+        </div>
+        <div class="banner-icons">
+          <img
+            src="assets/images/banner_icon3-2x.png"
+            class="banner-icons-image"
+            alt="giaohangtoanquoc"
+          />
+          <p>
+            Giao hàng <br />
+            toàn quốc
+          </p>
+        </div>
+        <div class="banner-icons">
+          <img
+            src="assets/images/banner_icon4-2x.png"
+            class="banner-icons-image"
+            alt="tichdiemnhanqua"
+          />
+          <p>
+            Tích lũy <br />
+            đổi quà
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

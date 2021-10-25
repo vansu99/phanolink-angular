@@ -1,0 +1,68 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.product-search-result {
+  padding-top: 15px;
+  margin-bottom: 13px;
+  @include font-size(16px);
+  color: #808081;
+  span {
+    font-weight: bold;
+    color: $dark-text;
+  }
+  .result-count {
+    color: $text-primary;
+    font-weight: 400;
+  }
+}
+
+.product-filter {
+  @include flex;
+  align-items: center;
+  padding-top: 12px;
+  margin-bottom: 25px;
+  @media #{$info-screen-768} {
+    margin-bottom: 15px;
+  }
+
+  span {
+    margin-right: 15px;
+    @include font-size(14px);
+    color: $text-primary;
+  }
+
+  &-list {
+    @include flex;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 13px;
+    height: 28px;
+    @include font-size(14px);
+    font-family: $font-intel;
+    color: $text-primary;
+    margin-right: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      background-color: $text-fourth;
+    }
+
+    @media #{$info-screen-768} {
+      margin-right: 10px;
+    }
+
+    &.active {
+      background-color: $text-fourth;
+      color: #fff;
+    }
+  }
+}

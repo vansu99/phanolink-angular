@@ -1,0 +1,19 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.cart-empty {
+  background-color: #fff;
+
+  .empty-content {
+    @include flexCenter;
+    flex-direction: column;
+    padding: 108px 0 200px;
+    h4 {
+      margin-bottom: 10px;
+      color: #808081;
+      @include font-size(26px);
+      font-weight: 400;
+      text-align: center;
+    }
+  }
+}

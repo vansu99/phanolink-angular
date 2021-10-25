@@ -1,0 +1,77 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.hot-products {
+  background-color: #fff;
+  margin-bottom: 20px;
+
+  &-header {
+    @include flex;
+    padding: 24px 23px 24px 30px;
+    align-items: center;
+    @media #{$info-screen-768} {
+      padding: 15px 20px 15px 25px;
+    }
+    img {
+      margin-right: 10px;
+    }
+  }
+
+  &-title {
+    h3 {
+      font-family: $font-intel-bold;
+      @include font-size(22px);
+      color: $text-primary;
+      line-height: 1;
+      text-transform: capitalize;
+      @media #{$info-screen-768} {
+        font-size: 16px;
+      }
+    }
+    p {
+      font-weight: 500;
+      @include font-size(18px);
+      color: $text-second;
+      line-height: 1.4;
+      @media #{$info-screen-768} {
+        font-size: 13px;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  &-list {
+    @include flex;
+    justify-content: space-between;
+  }
+
+  &-left {
+    width: calc(70% - 5px);
+    @media #{$info-screen-768} {
+      width: calc(50% - 5px);
+    }
+  }
+  &-right {
+    width: calc(30% - 5px);
+    @media #{$info-screen-768} {
+      width: calc(50% - 5px);
+    }
+  }
+}
+
+// Slick
+//::ng-deep .owl-carousel .owl-stage-outer {
+//  display: flex;
+//  flex-wrap: wrap;
+//  min-width: 100%;
+//}
+//::ng-deep .owl-carousel .owl-dots {
+//  display: block;
+//  padding-bottom: 15px;
+//}
+//::ng-deep .owl-theme .owl-dots .owl-dot.active span {
+//  background-color: #01ADAB;
+//}
+//::ng-deep .owl-theme .owl-dots .owl-dot span {
+//  background-color: #969696;
+//}

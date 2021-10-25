@@ -1,0 +1,37 @@
+<aside class="products-sidebar">
+  <div class="products-sidebar-container">
+    <div class="products-sidebar-brand">
+      <h4 class="sidebar-title">danh mục sản phẩm</h4>
+    </div>
+    <div class="products-sidebar-category">
+      <div class="category-list">
+        <a
+          *ngFor="let cate of categories"
+          class="category-item"
+          [routerLink]="['/products', cate.id]"
+          [class.active]="isLinkActive('/products', cate.id)"
+        >
+          <i class="fas fa-chevron-right category-icon"></i>
+          {{ cate.name }}
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="products-sidebar-container sidebar-promotes">
+    <div class="products-sidebar-brand">
+      <img src="assets/images/fire-red2x.png" alt="san pham khuyen mai" />
+      <h4 class="sidebar-title">Sản phẩm khuyến mãi</h4>
+    </div>
+    <div class="products-sidebar-promotes">
+      <a class="promote-item">
+        <img src="assets/images/hot-sale-slide-1-2x.png" alt="hot sale 1" />
+      </a>
+      <a class="promote-item">
+        <img src="assets/images/hot-sale-slide-2-2x.png" alt="hot sale 2" />
+      </a>
+      <a class="promote-item">
+        <img src="assets/images/hot-sale-slide-3-2x.png" alt="hot sale 3" />
+      </a>
+    </div>
+  </div>
+</aside>

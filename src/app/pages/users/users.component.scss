@@ -1,0 +1,22 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.user {
+  background-color: #ebebeb;
+  padding-top: 17px;
+  padding-bottom: 76px;
+
+  @media #{$info-screen-768} {
+    padding-top: 130px;
+    padding-bottom: 40px;
+  }
+
+  &-wrapper {
+    @include flex;
+    justify-content: flex-start;
+
+    @media #{$info-screen-768} {
+      flex-direction: column;
+    }
+  }
+}

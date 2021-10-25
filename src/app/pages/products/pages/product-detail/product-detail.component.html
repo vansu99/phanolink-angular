@@ -1,0 +1,112 @@
+<section class="product-detail">
+  <!--  thumbnail-->
+  <div class="product-detail-thumbnail product-detail-item">
+    <div class="thumbnail-main">
+      <img [src]="productDetail.img_path" [alt]="productDetail.name" />
+    </div>
+    <ul class="thumbnail-list">
+      <li class="thumbnail-item">
+        <img [src]="productDetail.img_path" alt="" />
+      </li>
+      <li class="thumbnail-item">
+        <img [src]="productDetail.img_path" alt="" />
+      </li>
+      <li class="thumbnail-item">
+        <img [src]="productDetail.img_path" alt="" />
+      </li>
+    </ul>
+  </div>
+
+  <!--  info-->
+  <div class="product-detail-info product-detail-item">
+    <div class="info-item info-top">
+      <h2>{{ productDetail.name }}</h2>
+      <div class="info-top-group">
+        <p>Thương hiệu: <span>Blackmores</span></p>
+        <p>
+          SKU: <span class="info-top-sku">{{ productDetail.id }}</span>
+        </p>
+      </div>
+    </div>
+    <div class="info-item info-middle">
+      <p>Trọng lượng: <span>300g</span></p>
+      <p>Kích thước: <span>15 x 15 x 15 cm</span></p>
+      <p>Quy cách: <span>Chai 60 viên</span></p>
+      <p>Xuất xứ: <span>USA</span></p>
+    </div>
+    <div class="info-item info-bottom">
+      <p>
+        Giá:
+        <span class="info-bottom-price">{{
+          productDetail.discount
+            ? (productDetail.original_price | discount: productDetail?.discount | price)
+            : (productDetail.original_price | price)
+        }}</span>
+      </p>
+      <p>Tình trạng: <span class="info-bottom-status">Còn hàng</span></p>
+      <div class="info-bottom-buy">
+        <div class="buy-item">
+          <p>Số lượng</p>
+          <div class="buy-quantity">
+            <button class="quantity-minus" (click)="handleDecreaseQuantity()">
+              <i class="fas fa-minus"></i>
+            </button>
+            <input type="text" class="quantity-amount" min="1" [value]="quantity" disabled />
+            <button class="quantity-plus" (click)="handleIncreaseQuantity()">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="buy-item">
+          <button class="buy-btn" (click)="addToCart()">
+            <img src="assets/images/cart--white2x.png" alt="buy" />
+            chọn mua
+          </button>
+          <button class="like-btn">
+            <img src="assets/images/heart--white2x.png" alt="like" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="info-item">
+      <p class="info-item-category">Danh mục: <span>Chăm sóc cá nhân, Chăm sóc răng miệng</span></p>
+    </div>
+  </div>
+
+  <!--  benefit-->
+  <div class="product-detail-benefit product-detail-item">
+    <h3 class="benefit-title">quyền lợi khách hàng</h3>
+    <ul class="benefit-list">
+      <li class="benefit-item">
+        <div class="benefit-image">
+          <img src="assets/images/percent--benefit.png" alt="san pham chinh hang" />
+        </div>
+        <h4 class="benefit-name">Sản phẩm chính hãng</h4>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-image">
+          <img src="assets/images/express--benefit.png" alt="giao hang toan quoc" />
+        </div>
+        <h4 class="benefit-name">Giao hàng toàn quốc</h4>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-image">
+          <img src="assets/images/mobile--benefit.png" alt="thanh toan linh hoat" />
+        </div>
+        <h4 class="benefit-name">Thanh toán linh hoạt</h4>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-image">
+          <img src="assets/images/gift--benefit.png" alt="tich diem doi qua" />
+        </div>
+        <h4 class="benefit-name">Tích điểm đổi quà</h4>
+      </li>
+      <li class="benefit-item">
+        <div class="benefit-image">
+          <img src="assets/images/telephone2x.png" alt="duoc si tu van" />
+        </div>
+        <h4 class="benefit-name">Dược sĩ tư vấn</h4>
+      </li>
+    </ul>
+  </div>
+</section>

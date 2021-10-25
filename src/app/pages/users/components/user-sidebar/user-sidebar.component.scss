@@ -1,0 +1,105 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.user-sidebar {
+  width: 308px;
+  margin-right: 15px;
+  overflow: hidden;
+  @media #{$info-screen-992} {
+    width: 160px;
+  }
+
+  @media #{$info-screen-768} {
+    width: 100%;
+  }
+
+  &-container {
+    background-color: #fff;
+    margin-bottom: 17px;
+
+    &.sidebar-promotes {
+      @media #{$info-screen-768} {
+        display: none;
+      }
+    }
+  }
+
+  &-brand {
+    @include flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e4;
+  }
+
+  .sidebar-title {
+    font-family: $font-intel-bold;
+    @include font-size(15px);
+    color: $text-primary;
+    text-transform: capitalize;
+  }
+
+  &-category {
+    padding: 25px 8px 17px 15px;
+    @media #{$info-screen-768} {
+      padding: 15px;
+    }
+
+    .category-list {
+      @media #{$info-screen-768} {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+    }
+    .category-icon {
+      opacity: 0;
+      visibility: hidden;
+      margin-right: 3px;
+      color: $bg-primary;
+      font-size: 11px;
+      display: inline-block;
+      line-height: 1.9;
+      transition: all 0.15s ease-in;
+      @media #{$info-screen-768} {
+        display: none;
+      }
+    }
+
+    .category-item {
+      @include font-size(14px);
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      color: $text-primary;
+      margin-bottom: 18px;
+      transition: all 0.15s ease-in;
+
+      @media #{$info-screen-768} {
+        width: calc(50% - 15px);
+        justify-content: center;
+        border: 1px solid currentColor;
+        border-radius: 30px;
+        padding: 3px 0;
+        margin-bottom: 10px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: $bg-primary;
+        .category-icon {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      &.active {
+        font-weight: bold;
+        color: $text-primary;
+        .category-icon {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

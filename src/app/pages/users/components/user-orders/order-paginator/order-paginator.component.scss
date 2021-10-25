@@ -1,0 +1,64 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.order {
+  &-pagination {
+    margin-top: 30px;
+    @include flex;
+    justify-content: flex-end;
+
+    @media #{$info-screen-992} {
+      justify-content: center;
+    }
+
+    .pagination-list {
+      @include flex;
+      flex-wrap: wrap;
+    }
+
+    .pagination-item {
+      margin-right: 15px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .pagination-link {
+      cursor: pointer;
+      @include flexCenter;
+      width: 25px;
+      height: 25px;
+      color: #808081;
+      border: 0;
+      outline: none;
+      background: transparent;
+      @include font-size(15.75px);
+      font-family: $font-myriad-regular;
+      border-radius: 5px;
+      line-height: 1.4;
+      @include transition(all 350ms ease);
+      @media #{$info-screen-768} {
+        font-size: 13px;
+      }
+
+      &:hover:not(.pagination-link.active, &[disabled]) {
+        border: 1px solid $bg-primary;
+      }
+      &.active {
+        background-color: $bg-primary;
+        color: #fff;
+      }
+      &[disabled] {
+        border: 0;
+        background-color: #7777;
+      }
+    }
+    .pagination-icon-next {
+      border: 1px solid $text-second;
+      border-radius: 5px;
+      i {
+        @include font-size(12px);
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<section class="hot-sale">
+  <div class="hot-sale-header">
+    <div class="section-title">
+      <img src="assets/images/hot-icon-fire.png" alt="khuyen mai hot" />
+      <h3>Khuyến mãi hot</h3>
+    </div>
+    <a class="sale-header-more">Xem tất cả ></a>
+  </div>
+  <div class="hot-sale-slides">
+    <owl-carousel-o [options]="customOption" class="hot-sale-list">
+      <ng-container *ngFor="let item of hotProduct | async">
+        <ng-template carouselSlide>
+          <img [src]="item.img_path" [alt]="item.name" />
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</section>

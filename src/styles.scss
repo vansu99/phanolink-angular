@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "styles/base/common";
+@import "styles/helpers/variables";
+@import "styles/base/typography";
+@import "styles/helpers/mixins";
+@import "styles/helpers/function";
+@import "assets/fonts/font-file.css";
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+.custom-dialog-form {
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 0;
+    overflow: unset;
+  }
+}
+
+snack-bar-container.success {
+  background-color: #5cb85c;
+  color: #fff;
+}
+
+snack-bar-container.notification simple-snack-bar {
+  font-size: 16px;
+  font-weight: 600;
+}
+

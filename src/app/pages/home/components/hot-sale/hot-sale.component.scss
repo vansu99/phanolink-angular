@@ -1,0 +1,41 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.hot-sale {
+  background-color: #fff;
+  margin-bottom: 20px;
+
+  &-header {
+    padding: 24px 20px 24px 33px;
+    @include flex;
+    justify-content: space-between;
+    align-items: center;
+    @media #{$info-screen-768} {
+      padding: 15px 20px 15px 25px;
+    }
+
+    .sale-header-more {
+      cursor: pointer;
+      color: $bg-primary;
+      @include font-size(18.5px);
+
+      @media #{$info-screen-768} {
+        font-size: 14px;
+      }
+    }
+  }
+  &-slides {
+  }
+}
+
+// Slick
+::ng-deep .hot-sale-list .owl-carousel .owl-dots {
+  display: block;
+  padding-bottom: 15px;
+}
+::ng-deep .owl-theme .owl-dots .owl-dot.active span {
+  background-color: #01adab;
+}
+::ng-deep .owl-theme .owl-dots .owl-dot span {
+  background-color: #969696;
+}

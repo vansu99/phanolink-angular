@@ -1,0 +1,27 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+.category {
+  &-header {
+    @include flex;
+    background-color: #fff;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 24px 20px 24px 33px;
+    @media #{$info-screen-768} {
+      padding: 15px 20px 15px 25px;
+    }
+
+    &-more {
+      cursor: pointer;
+      color: $bg-primary;
+      text-decoration: none;
+      @include font-size(18.5px);
+
+      @media #{$info-screen-768} {
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import 'src/styles/helpers/mixins';
+@import 'src/styles/helpers/variables';
+
+.checkout-fail {
+  @include flex;
+  background-color: #fff;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 48px;
+  p {
+    @include font-size(20px);
+    color: $dark-text;
+    text-align: center;
+    span {
+      color: #ea4036;
+      font-weight: bold;
+      @include font-size(24px);
+    }
+  }
+
+  &-code {
+    margin-bottom: 35px;
+  }
+
+}

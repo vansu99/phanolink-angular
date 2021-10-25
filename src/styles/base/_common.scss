@@ -1,0 +1,250 @@
+@import 'src/styles/helpers/variables';
+@import 'src/styles/helpers/mixins';
+
+a {
+  text-decoration: none;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+ul,
+ol,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style-type: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  outline: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+*,
+*:after,
+*:before {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+svg,
+.fas {
+  vertical-align: baseline;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body.show {
+  overflow: hidden;
+}
+
+main {
+  background-color: #ebebeb;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text {
+  @include font-size(14px);
+  font-family: $font-intel;
+  line-height: 1.4;
+}
+.text-center {
+  text-align: center;
+}
+.text--light {
+  color: #808081;
+}
+.text--dartBold {
+  font-weight: bold;
+  color: $dark-text;
+}
+.text--black {
+  color: $dark-text;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 50px;
+    margin-right: 10px;
+    @media #{$info-screen-768} {
+      height: 40px;
+    }
+  }
+
+  h3 {
+    font-family: $font-intel-bold;
+    @include font-size(22px);
+    color: $text-primary;
+    line-height: 1;
+    text-transform: capitalize;
+    @media #{$info-screen-768} {
+      font-size: 16px;
+    }
+  }
+
+  p {
+    font-weight: 500;
+    @include font-size(18px);
+    color: $text-second;
+    line-height: 1.4;
+    @media #{$info-screen-768} {
+      font-size: 13px;
+      line-height: 1.2;
+    }
+  }
+}
+
+.user-header {
+  position: absolute;
+  left: 30px;
+  @include flexCenter;
+  background-color: $bg-primary;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: 175px;
+  height: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  @include font-size(14px);
+  font-family: $font-intel-bold;
+  @include transform(translateY(-7px));
+
+  @media #{$info-screen-768} {
+    width: 115px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -10px;
+    top: 0;
+    border-bottom: 7px solid #016b68;
+    border-left: 10px solid transparent;
+  }
+}
+
+.section-header {
+  margin-bottom: 26px;
+  @media #{$info-screen-768} {
+    margin-bottom: 15px;
+  }
+
+  .header-item {
+    background-color: $bg-primary;
+    width: 160px;
+    height: 55px;
+    @include transform(translateY(-4px));
+    @include flexCenter;
+    flex-direction: column;
+    color: #ffffff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    position: relative;
+    @include font-size(14px);
+    @media #{$info-screen-768} {
+      width: 125px;
+      height: 45px;
+    }
+    h4 {
+      line-height: 1.2;
+      text-transform: uppercase;
+      font-family: $font-intel-bold;
+    }
+    b {
+      line-height: 1.4;
+      color: $text-fourth;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 0;
+      left: -8px;
+      border-bottom: 5px solid #016b68;
+      border-left: 8px solid transparent;
+    }
+  }
+}
+.section-header--left {
+  padding-left: 27px;
+}
+.section-header--center {
+  @include flex;
+  justify-content: center;
+}
+.section-header--fail {
+  background-color: $text-fourth;
+}
+
+.back-button {
+  position: relative;
+  color: $bg-primary;
+  font-weight: bold;
+  @include font-size(25px);
+  @include flex;
+  align-items: center;
+  i {
+    margin-right: 2px;
+    margin-top: 7px;
+    @include transition(all 0.15s ease-in);
+  }
+
+  &:hover {
+    i {
+      @include transform(translateX(-8px));
+    }
+  }
+}
+
+.button--uppercase {
+  text-transform: uppercase;
+  font-weight: 400;
+}

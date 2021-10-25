@@ -1,0 +1,99 @@
+<form [formGroup]="adminForm" (ngSubmit)="data?.productDetail?.id ? onUpdate() : onSubmit()">
+  <div class="form-wrapper">
+    <div class="form-item">
+      <div class="form-group">
+        <label class="form-label" for="title">Tên sản phẩm</label>
+        <input
+          type="text"
+          id="title"
+          class="form-input"
+          placeholder="Nhập tên sản phẩm"
+          formControlName="name"
+        />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="price">Giá sản phẩm</label>
+        <input
+          type="text"
+          id="price"
+          min="0"
+          class="form-input"
+          placeholder="Nhập giá sản phẩm"
+          formControlName="original_price"
+        />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="quantity">Số lượng sản phẩm</label>
+        <input
+          type="text"
+          id="quantity"
+          min="0"
+          class="form-input"
+          placeholder="Nhập số lượng sản phẩm"
+          formControlName="quantity"
+        />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="img_path">Hình ảnh sản phẩm</label>
+        <input type="file" id="img_path" class="form-input" (change)="onFileChange($event)" />
+      </div>
+      <div class="form-group">
+        <mat-checkbox formControlName="is_gift" class="example-margin">Quà tặng</mat-checkbox>
+      </div>
+      <div class="form-group">
+        <mat-checkbox formControlName="is_free_shipping" class="example-margin"
+          >Miễn phí giao hàng</mat-checkbox
+        >
+      </div>
+    </div>
+    <div class="form-item">
+      <div class="form-group">
+        <label class="form-label" for="category">Danh mục sản phẩm</label>
+        <select id="category" class="form-select" formControlName="category_id">
+          <option value="">Chọn danh mục sản phẩm</option>
+          <option value="{{ cate.id }}" *ngFor="let cate of categoryList">{{ cate.name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="discount">Giảm giá</label>
+        <select id="discount" class="form-select" formControlName="discount">
+          <option value="">Chọn mã giảm giá</option>
+          <option value="{{ item }}" *ngFor="let item of discount">{{ item }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="status">Tình trạng</label>
+        <select id="status" class="form-select" formControlName="status">
+          <option value="">Chọn tình trạng sản phẩm</option>
+          <option value="Còn hàng">Còn hàng</option>
+          <option value="Hết hàng">Hết hàng</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="description">Mô tả sản phẩm</label>
+        <textarea
+          id="description"
+          rows="5"
+          class="form-textarea"
+          formControlName="description"
+          placeholder="Nhập mô tả sản phẩm"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="form-button form-button-cancel" (click)="onClose()">Hủy</button>
+    <button type="reset" class="form-button form-button-clear">Làm mới</button>
+    <button type="submit" class="form-button" [disabled]="adminForm.invalid">
+      {{ data?.productDetail?.id ? 'Lưu cập nhật' : 'Thêm sản phẩm' }}
+    </button>
+    <button
+      type="button"
+      *ngIf="data?.productDetail?.id"
+      class="form-button form-button-remove"
+      (click)="onDelete(data?.productDetail?.id)"
+    >
+      Xóa sản phẩm
+    </button>
+  </div>
+</form>

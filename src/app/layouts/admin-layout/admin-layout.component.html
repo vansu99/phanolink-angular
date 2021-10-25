@@ -1,0 +1,14 @@
+<ng-container *ngIf="isLoginActive">
+  <phanolink-admin-header></phanolink-admin-header>
+</ng-container>
+
+<div class="admin-container" *ngIf="isLoginActive; else loginActive">
+  <router-outlet></router-outlet>
+</div>
+
+<ng-template #loginActive>
+  <div class="admin-login">
+    <h3 class="admin-login-heading">Admin</h3>
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>
