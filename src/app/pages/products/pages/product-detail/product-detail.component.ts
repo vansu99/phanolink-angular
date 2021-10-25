@@ -4,7 +4,7 @@ import { DiscountPipe } from '@shared/pipes/discount.pipe';
 import { ProductsService } from '@pages/products/products.service';
 import { CartService } from '@pages/cart/cart.service';
 import { CartState } from '@pages/cart/cart.model';
-import {ProductState} from "@pages/products/products.model";
+import { ProductState } from '@pages/products/products.model';
 
 @Component({
   selector: 'phanolink-product-detail',
@@ -48,7 +48,10 @@ export class ProductDetailComponent implements OnInit {
     const cartItem: CartState = {
       id: this.productDetail.id,
       title: this.productDetail.name,
-      price: this.discount.transform(this.productDetail.original_price, <number>this.productDetail.discount),
+      price: this.discount.transform(
+        this.productDetail.original_price,
+        <number>this.productDetail.discount
+      ),
       discount: this.productDetail.discount,
       original_price: this.productDetail.original_price,
       thumbnail: this.productDetail.img_path,

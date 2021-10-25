@@ -28,6 +28,7 @@ export class CartService {
   ) {}
 
   addToCart(product: CartState) {
+    console.log(product)
     const index = this.cartList.findIndex((cart: CartState) => cart.id === product.id);
     if (index >= 0) {
       this.cartList[index].quantity += product.quantity;
@@ -58,6 +59,7 @@ export class CartService {
   }
 
   setPaymentCart(value: any) {
+    console.log(value)
     return this.api.post('order', value).subscribe((response) => {
       const order = {
         ...value,

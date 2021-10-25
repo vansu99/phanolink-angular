@@ -9,9 +9,10 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { UserOrdersComponent } from './components/user-orders/user-orders.component';
 import { UserSidebarComponent } from './components/user-sidebar/user-sidebar.component';
 import { PhanolinkBreadcrumbModule } from '@shared/components/phanolink-breadcrumb/phanolink-breadcrumb.module';
+import { OrderPaginatorComponent } from './components/user-orders/order-paginator/order-paginator.component';
 
 @NgModule({
-  declarations: [UsersComponent, UserInfoComponent, UserOrdersComponent, UserSidebarComponent],
+  declarations: [UsersComponent, UserInfoComponent, UserOrdersComponent, UserSidebarComponent, OrderPaginatorComponent],
   imports: [
     SharedModule,
     CommonModule,

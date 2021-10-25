@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '@pages/users/users.service';
 import { Observable } from 'rxjs';
 import { OrderState } from '@pages/users/users.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'phanolink-user-orders',
@@ -14,11 +15,20 @@ import { OrderState } from '@pages/users/users.model';
 export class UserOrdersComponent implements OnInit {
   orderList!: Observable<OrderState[]>;
 
-  constructor(private readonly users: UsersService) {
+  constructor(private readonly users: UsersService, private readonly route: ActivatedRoute) {
     this.orderList = this.users.orders$;
   }
 
   ngOnInit(): void {
-    this.users.getOrders();
+    this.loadOrders();
+  }
+
+  loadOrders() {
+    this.route.queryParams.subscribe((res) => {
+      let queryParamState = {
+        page: res.page,
+      };
+      this.users.getOrders(queryParamState);
+    });
   }
 }

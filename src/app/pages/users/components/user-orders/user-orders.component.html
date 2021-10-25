@@ -28,7 +28,7 @@
     <ul class="order-content">
       <li class="order-content-item" *ngFor="let order of orderList | async">
         <p class="text text-center text-code">{{ order.id }}</p>
-        <p class="text text--black text-center">{{ order.date_buy | date: 'dd/MM/yyyy'}}</p>
+        <p class="text text--black text-center">{{ order.date_buy | date: 'dd/MM/yyyy' }}</p>
         <p class="text text--black">
           {{ order.products }}
         </p>
@@ -40,6 +40,7 @@
     </ul>
   </div>
 </section>
+<phanolink-order-paginator></phanolink-order-paginator>
 
 <ng-template #orderEmpty>
   <div class="user-order-empty">
