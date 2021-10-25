@@ -2,7 +2,7 @@
 
 # Working application
 
-Check out the live demo:
+Check out the live demo: https://phanolink-miniproject.vercel.app
 
 # Tech Stack
 ## Front-end
