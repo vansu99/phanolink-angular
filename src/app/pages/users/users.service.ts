@@ -30,6 +30,7 @@ export class UsersService {
     } else {
       return this.api.get(`order`).subscribe((res) => {
         this.orderSubject.next([...res.body.data]);
+        this.paginationSubject.next(res.body.pagination);
       });
     }
   }
