@@ -22,7 +22,9 @@
             [routerLink]="['/products/', product.category_id, 'de', product.id]"
           >
             <div *ngIf="!!product.discount" class="product-badge badge-sale">
-              <img src="assets/images/sale2x.png" alt="saleoff" />
+              <p class="badge-sale-item">
+                {{ product.discount }}<span>%</span>
+              </p>
             </div>
             <div *ngIf="product.is_free_shipping" class="product-badge badge-freeship">
               <img src="assets/images/ship2x.png" alt="freeship" />

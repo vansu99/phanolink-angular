@@ -4,7 +4,7 @@ import { STORAGE_KEYS, StorageService } from '@core/services/storage.service';
 @Component({
   selector: 'phanolink-checkout-success',
   templateUrl: './checkout-success.component.html',
-  styleUrls: ['./checkout-success.component.scss'],
+  styleUrls: ['./checkout-success.component.scss', '../../check-out.component.scss'],
 })
 export class CheckoutSuccessComponent implements OnInit {
   idPayment!: any;

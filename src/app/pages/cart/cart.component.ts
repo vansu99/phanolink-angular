@@ -1,10 +1,9 @@
+import { map } from 'rxjs/operators';
 import { Component } from '@angular/core';
 import { CartState } from '@pages/cart/cart.model';
-import { Router } from '@angular/router';
-import { AuthService } from '@features/auth/auth.service';
-import { CartService } from '@pages/cart/cart.service';
 import { MatDialog } from '@angular/material/dialog';
-import { map } from 'rxjs/operators';
+import { CartService } from '@pages/cart/cart.service';
+import { AuthService } from '@features/auth/auth.service';
 import { DialogFormComponent } from '@layouts/public-layout/components/phanolink-header/modals/dialog-form/dialog-form.component';
 
 @Component({
@@ -18,7 +17,6 @@ export class CartComponent {
   totalPrice = 0;
 
   constructor(
-    private readonly router: Router,
     private readonly dialog: MatDialog,
     private readonly auth: AuthService,
     private readonly cart: CartService
@@ -52,13 +50,11 @@ export class CartComponent {
         });
       } else {
         const order = {
-          id: Math.floor(Math.random() * 99),
           carts: this.cartList,
           tempPrice: this.totalPrice,
-          total: this.handleTotalPayment(20, 15),
+          total: this.handleTotalPayment(20000, 15000),
         };
         this.cart.setPaymentCart(order);
-        this.router.navigate(['/checkout/success']);
       }
     });
   }
