@@ -60,18 +60,17 @@
 }
 
 // Slick
-//::ng-deep .owl-carousel .owl-stage-outer {
-//  display: flex;
-//  flex-wrap: wrap;
-//  min-width: 100%;
-//}
-//::ng-deep .owl-carousel .owl-dots {
-//  display: block;
-//  padding-bottom: 15px;
-//}
-//::ng-deep .owl-theme .owl-dots .owl-dot.active span {
-//  background-color: #01ADAB;
-//}
-//::ng-deep .owl-theme .owl-dots .owl-dot span {
-//  background-color: #969696;
-//}
+::ng-deep .hot-products-left .owl-carousel .owl-stage {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+::ng-deep .hot-products-left .owl-carousel .owl-stage .owl-item {
+  width: 402px !important;
+  @media #{$info-screen-992} {
+    width: 253.5px !important;
+  }
+  @media #{$info-screen-768} {
+    width: 168px !important;
+  }
+}

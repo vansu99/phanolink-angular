@@ -9,46 +9,14 @@
   <div class="hot-products-list">
     <div class="hot-products-left">
       <owl-carousel-o [options]="customOption">
-        <ng-template carouselSlide>
-          <img
-            src="assets/images/hot-sale-slide-1-2x.png"
-            alt="hot sale 1 phanolink"
-          />
-          <img
-            src="assets/images/hot-sale-slide-1-2x.png"
-            alt="hot sale 2 phanolink"
-          />
-        </ng-template>
-        <ng-template carouselSlide>
-          <img
-            src="assets/images/hot-sale-slide-1-2x.png"
-            alt="hot sale 2 phanolink"
-          />
-          <img
-            src="assets/images/hot-sale-slide-2-2x.png"
-            alt="hot sale 2 phanolink"
-          />
-        </ng-template>
-        <ng-template carouselSlide>
-          <img
-            src="assets/images/hot-sale-slide-1-2x.png"
-            alt="hot sale 3 phanolink"
-          />
-          <img
-            src="assets/images/hot-sale-slide-1-2x.png"
-            alt="hot sale 3 phanolink"
-          />
-        </ng-template>
-        <ng-template carouselSlide>
-          <img
-            src="assets/images/hot-sale-slide-1-2x.png"
-            alt="hot sale 3 phanolink"
-          />
-          <img
-            src="assets/images/hot-sale-slide-1-2x.png"
-            alt="hot sale 3 phanolink"
-          />
-        </ng-template>
+        <ng-container *ngFor="let sale of saleProduct | async">
+          <ng-template carouselSlide>
+            <img
+              [src]="sale.img_path"
+              [alt]="sale.name"
+            />
+          </ng-template>
+        </ng-container>
       </owl-carousel-o>
     </div>
     <div class="hot-products-right">

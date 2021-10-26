@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { ApiService } from '@core/services/api.service';
 import { SliderState } from '@shared/components/phanolink-slider/phanolink-slider.model';
 
@@ -13,6 +13,9 @@ export class HomeService {
   private productHotSubject = new BehaviorSubject<SliderState[]>([]);
   productHot$ = this.productHotSubject.asObservable();
 
+  private productSaleSubject = new BehaviorSubject<SliderState[]>([]);
+  productSale$ = this.productSaleSubject.asObservable();
+
   constructor(private readonly api: ApiService) {}
 
   getSlides() {
@@ -24,6 +27,12 @@ export class HomeService {
   getProductHot() {
     return this.api.get('home/gift').subscribe((response) => {
       this.productHotSubject.next([...response.body.data]);
+    });
+  }
+
+  getProductSale() {
+    return this.api.get('home/hot').subscribe((response) => {
+      this.productSaleSubject.next([...response.body.data]);
     });
   }
 }
