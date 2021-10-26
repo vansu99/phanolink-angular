@@ -157,8 +157,13 @@
           <img src="assets/images/menu2x.png" alt="" />
         </button>
         <div class="header-search">
-          <input type="text" placeholder="Bạn đang tìm thuốc gì..." [formControl]="query" />
-          <button class="search-button">
+          <input
+            type="text"
+            placeholder="Bạn đang tìm thuốc gì..."
+            [formControl]="query"
+            (keyup.enter)="handleSearchProduct()"
+          />
+          <button class="search-button" (click)="handleSearchProduct()">
             <img src="assets/images/search2x.png" alt="" />
           </button>
         </div>
