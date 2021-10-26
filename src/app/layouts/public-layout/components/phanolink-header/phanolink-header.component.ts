@@ -10,9 +10,10 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@features/auth/auth.service';
 import { UserState } from '@features/auth/auth.model';
-import { DialogFormComponent } from '@layouts/public-layout/components/phanolink-header/modals/dialog-form/dialog-form.component';
 import { MatDialog } from '@angular/material/dialog';
-import {CartService} from "@pages/cart/cart.service";
+import { CartService } from '@pages/cart/cart.service';
+import { DialogFormComponent } from '@layouts/public-layout/components/phanolink-header/modals/dialog-form/dialog-form.component';
+import { ProductsService } from '@pages/products/products.service';
 
 @Component({
   selector: 'phanolink-header',
@@ -30,14 +31,16 @@ export class PhanolinkHeaderComponent implements OnInit {
   isMenuMobile = false;
   isLoggedIn!: Observable<boolean>;
   query = new FormControl('');
-  cartLength = 0
+  cartLength = 0;
+  categoryMenu: any[] = [];
 
   constructor(
     private readonly router: Router,
     private readonly dialog: MatDialog,
     private readonly auth: AuthService,
     private readonly route: ActivatedRoute,
-    private readonly cart: CartService
+    private readonly cart: CartService,
+    private readonly product: ProductsService
   ) {
     this.cart.cartList$.subscribe((response) => {
       this.cartLength = response.length;
@@ -47,6 +50,13 @@ export class PhanolinkHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCurrentUser();
+    this.loadCategoryMenu();
+  }
+
+  loadCategoryMenu() {
+    this.product.getCategory().subscribe(res => {
+      this.categoryMenu = [...res]
+    })
   }
 
   loadCurrentUser() {

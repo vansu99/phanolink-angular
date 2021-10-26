@@ -62,14 +62,8 @@
           <span class="header-name">danh mục sản phẩm</span>
         </a>
         <ul class="sub-menu">
-          <li class="sub-menu-item">
-            <a class="sub-menu-link">Mẹ và bé</a>
-          </li>
-          <li class="sub-menu-item">
-            <a class="sub-menu-link">Mẹ và bé</a>
-          </li>
-          <li class="sub-menu-item">
-            <a class="sub-menu-link">Mẹ và bé</a>
+          <li class="sub-menu-item" *ngFor="let cate of categoryMenu">
+            <a [routerLink]="['/products', cate.id]" class="sub-menu-link">{{ cate.name }}</a>
           </li>
         </ul>
       </div>
